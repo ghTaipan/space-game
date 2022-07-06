@@ -5,7 +5,6 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public GameObject deathEffect;
-    
     void Die()
     {
         GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);

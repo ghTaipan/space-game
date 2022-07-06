@@ -7,16 +7,18 @@ public class Shooting : MonoBehaviour
     
     public Transform firePoint;
     public GameObject bulletPreFab;
+    public WeaponMovement movement;
     public float bulletForce = 20f;
     public float ammo = 4f;
-    
-    
-    // Update is called once per frame
     void Update()
     {
         if(Input.GetButtonDown("Fire1") && ammo > 0){
             Shoot();
             ammo --;
+            if(ammo <= 0){
+                movement.enabled = false;
+                FindObjectOfType<GameManager>().gameOver();
+            }
         }
     }
     void Shoot(){
@@ -25,6 +27,6 @@ public class Shooting : MonoBehaviour
         firePoint.Rotate(0,0,90f);
         rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
         firePoint.Rotate(0,0,-90f);
-        
+
     }
 }
