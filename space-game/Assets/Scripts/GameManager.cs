@@ -17,9 +17,9 @@ public class GameManager : MonoBehaviour
     public GameObject enemy2;
     public GameObject enemy3;
     void Start(){
-        int mod = SceneManager.GetActiveScene().buildIndex % 4;
-        Debug.Log(mod);
-        if(SceneManager.GetActiveScene().buildIndex/4 <= 1){
+        int index = SceneManager.GetActiveScene().buildIndex;
+        int mod = index % 4;
+        if(index/4 == 0){
             if(mod == 0){
                 enemy1 = Instantiate(Resources.Load("Enemy1")) as GameObject;
             }
@@ -43,6 +43,35 @@ public class GameManager : MonoBehaviour
                 enemy2.transform.localScale = new Vector3(0.66f,0.66f,1);
                 enemy2.transform.position = new Vector3 (-0.7f,2.40f,0);
                 enemy3 = Instantiate(Resources.Load("Enemy1")) as GameObject;
+                enemy3.transform.localScale = new Vector3(0.66f,0.66f,1);
+                enemy3.transform.position = new Vector3 (0,1.2f,0);
+
+            }
+        }
+        else if( index/4 == 1){
+            if(mod == 0){
+                enemy1 = Instantiate(Resources.Load("Enemy2")) as GameObject;
+            }
+            else if (mod == 1){
+                enemy1 = Instantiate(Resources.Load("Enemy2")) as GameObject;
+                enemy1.transform.localScale = new Vector3(0.66f,0.66f,1);
+            }
+            else if (mod == 2){
+                enemy1 = Instantiate(Resources.Load("Enemy2")) as GameObject;
+                enemy1.transform.localScale = new Vector3(0.66f,0.66f,1);
+                enemy1.transform.position = new Vector3 (0.7f,2.40f,0);
+                enemy2 = Instantiate(Resources.Load("Enemy2")) as GameObject;
+                enemy2.transform.localScale = new Vector3(0.66f,0.66f,1);
+                enemy2.transform.position = new Vector3 (-0.7f,2.40f,0);
+            }
+            else{
+                enemy1 = Instantiate(Resources.Load("Enemy2")) as GameObject;
+                enemy1.transform.localScale = new Vector3(0.66f,0.66f,1);
+                enemy1.transform.position = new Vector3 (0.7f,2.40f,0);
+                enemy2 = Instantiate(Resources.Load("Enemy2")) as GameObject;
+                enemy2.transform.localScale = new Vector3(0.66f,0.66f,1);
+                enemy2.transform.position = new Vector3 (-0.7f,2.40f,0);
+                enemy3 = Instantiate(Resources.Load("Enemy2")) as GameObject;
                 enemy3.transform.localScale = new Vector3(0.66f,0.66f,1);
                 enemy3.transform.position = new Vector3 (0,1.2f,0);
 

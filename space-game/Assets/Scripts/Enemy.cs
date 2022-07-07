@@ -5,13 +5,13 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public GameObject deathEffect;
-    void Die()
+    public virtual void Die()
     {
         GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(effect,0.3f);
          Destroy(gameObject);
     }
-    void OnCollisionEnter2D(Collision2D collisionInfo){
+    public virtual void OnCollisionEnter2D(Collision2D collisionInfo){
         if(collisionInfo.collider.tag == "Bullet"){
             Die();
             Destroy(collisionInfo.collider.gameObject);
