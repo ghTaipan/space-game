@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy2 : Enemy
+public class Enemy3 : Enemy
 {
     Vector2 movement;
-    void FixedUpdate(){
-        movement.x = -0.02f;
-        movement.y = 0;
+    void Start(){
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
-         rb.AddForce(movement, ForceMode2D.Impulse);
+        movement.y = -1.5f;
+        rb.velocity = movement;
     }
     public override void Die()
     {

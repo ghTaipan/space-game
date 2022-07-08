@@ -17,7 +17,7 @@ public class Shooting : MonoBehaviour
             ammo --;
             if(ammo <= 0){
                 movement.enabled = false;
-                FindObjectOfType<GameManager>().gameOver();
+                FindObjectOfType<GameManager>().LevelFailed();
             }
         }
     }
