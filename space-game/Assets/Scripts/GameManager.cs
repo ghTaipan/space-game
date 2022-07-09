@@ -16,16 +16,19 @@ public class GameManager : MonoBehaviour
     public GameObject enemy1;
     public GameObject enemy2;
     public GameObject enemy3;
+    public int mod = 0;
     void Start(){
         int index = SceneManager.GetActiveScene().buildIndex;
-        int mod = index % 4;
+        mod = index % 4;
         if(index/4 == 0){
             if(mod == 0){
                 enemy1 = Instantiate(Resources.Load("Enemy1")) as GameObject;
+                enemy1.transform.position = new Vector3 (0,2.4f,0);
             }
             else if (mod == 1){
                 enemy1 = Instantiate(Resources.Load("Enemy1")) as GameObject;
                 enemy1.transform.localScale = new Vector3(0.66f,0.66f,1);
+                enemy1.transform.position = new Vector3 (0,2.4f,0);
             }
             else if (mod == 2){
                 enemy1 = Instantiate(Resources.Load("Enemy1")) as GameObject;
@@ -51,10 +54,12 @@ public class GameManager : MonoBehaviour
         else if( index/4 == 1){
             if(mod == 0){
                 enemy1 = Instantiate(Resources.Load("Enemy2")) as GameObject;
+                enemy1.transform.position = new Vector3 (0,2.4f,0);
             }
             else if (mod == 1){
                 enemy1 = Instantiate(Resources.Load("Enemy2")) as GameObject;
                 enemy1.transform.localScale = new Vector3(0.66f,0.66f,1);
+                enemy1.transform.position = new Vector3 (0,2.4f,0);
             }
             else if (mod == 2){
                 enemy1 = Instantiate(Resources.Load("Enemy2")) as GameObject;
@@ -80,10 +85,12 @@ public class GameManager : MonoBehaviour
         else if( index/4 == 2){
              if(mod == 0){
                 enemy1 = Instantiate(Resources.Load("Enemy3")) as GameObject;
+                enemy1.transform.position = new Vector3 (0,2.4f,0);
             }
             else if (mod == 1){
                 enemy1 = Instantiate(Resources.Load("Enemy3")) as GameObject;
                 enemy1.transform.localScale = new Vector3(0.66f,0.66f,1);
+                enemy1.transform.position = new Vector3 (0,2.4f,0);
             }
             else if (mod == 2){
                 enemy1 = Instantiate(Resources.Load("Enemy3")) as GameObject;
@@ -106,6 +113,37 @@ public class GameManager : MonoBehaviour
 
             }
         }
+        else{
+            if(mod == 0){
+                enemy1 = Instantiate(Resources.Load("Enemy4")) as GameObject;
+                enemy1.transform.position = new Vector3 (0,2.4f,0);
+            }
+            else if (mod == 1){
+                enemy1 = Instantiate(Resources.Load("Enemy4")) as GameObject;
+                enemy1.transform.localScale = new Vector3(0.66f,0.66f,1);
+                enemy1.transform.position = new Vector3 (0,2.4f,0);
+            }
+            else if (mod == 2){
+                enemy1 = Instantiate(Resources.Load("Enemy4")) as GameObject;
+                enemy1.transform.localScale = new Vector3(0.66f,0.66f,1);
+                enemy1.transform.position = new Vector3 (-0.7f,2.40f,0);
+                enemy2 = Instantiate(Resources.Load("Enemy4")) as GameObject;
+                enemy2.transform.localScale = new Vector3(0.66f,0.66f,1);
+                enemy2.transform.position = new Vector3 (0.7f,2.40f,0);
+            }
+            else{
+                enemy1 = Instantiate(Resources.Load("Enemy4")) as GameObject;
+                enemy1.transform.localScale = new Vector3(0.66f,0.66f,1);
+                enemy1.transform.position = new Vector3 (-0.7f,2.40f,0);
+                enemy2 = Instantiate(Resources.Load("Enemy4")) as GameObject;
+                enemy2.transform.localScale = new Vector3(0.66f,0.66f,1);
+                enemy2.transform.position = new Vector3 (0.7f,2.40f,0);
+                enemy3 = Instantiate(Resources.Load("Enemy4")) as GameObject;
+                enemy3.transform.localScale = new Vector3(0.66f,0.66f,1);
+                enemy3.transform.position = new Vector3 (0,1.2f,0);
+
+            }
+        }
     }
     public void LevelCompleted(){
         shooting.enabled = false;
@@ -117,24 +155,20 @@ public class GameManager : MonoBehaviour
             movement.enabled = false;
             LevelCompleted();
         }
-        /*if(enemy1 != null && enemy2 != null){
-            Rigidbody2D rb = enemy1.GetComponent(typeof (Rigidbody2D)) as Rigidbody2D;
-            Rigidbody2D rb2 = enemy2.GetComponent(typeof (Rigidbody2D)) as Rigidbody2D;
-            if (rb.velocity != rb2.velocity){
-                    Debug.Log(switchSide);
-                    if(switchSide == 0){
-                        rb2.velocity = -rb2.velocity;
-                        switchSide = 1;     
-                    }
-                    else{
-                        rb.velocity = -rb.velocity;
-                        switchSide = 0;
-                    }
-            }
-       }
-       */
     }
     public void LevelFailed(){;
+        if(enemy1 != null){
+            Rigidbody2D rb1 = enemy1.GetComponent(typeof (Rigidbody2D)) as Rigidbody2D;
+            Destroy(rb1);
+        }
+        if(enemy2 != null){
+            Rigidbody2D rb2 = enemy2.GetComponent(typeof (Rigidbody2D)) as Rigidbody2D;
+            Destroy(rb2);
+        }
+        if(enemy3 != null){
+            Rigidbody2D rb3 = enemy3.GetComponent(typeof (Rigidbody2D)) as Rigidbody2D;
+            Destroy(rb3);
+        }
         StartCoroutine(WaitForLevelFailed(0.5f));
     }
      IEnumerator WaitForLevelFailed(float seconds){
