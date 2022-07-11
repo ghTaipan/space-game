@@ -5,7 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class LevelComplete : MonoBehaviour
 {
-  void LoadNextLevel(){
+  public Player player;
+  public WeaponMovement wp;
+  public Animator laser;
+  void Start(){
+    wp.Exit();
+    Invoke("playerExit",1f);
+    Invoke("wait",2.5f);
+  }
+  void playerExit(){
+    laser.SetTrigger("LaserOff");
+    player.Exit();
+  }
+  void wait(){
     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
   }
 

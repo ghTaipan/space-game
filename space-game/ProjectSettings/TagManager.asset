@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Bullet
   - Enemy
+  - Ammo
+  - Laser
   layers:
   - Default
   - TransparentFX
@@ -45,6 +47,15 @@ TagManager:
     locked: 0
   - name: player-screen
     uniqueID: 368752597
+    locked: 0
+  - name: Laser
+    uniqueID: 501092397
+    locked: 0
+  - name: laser-ball
+    uniqueID: 2340956377
+    locked: 0
+  - name: Weapon
+    uniqueID: 1782863079
     locked: 0
   - name: Default
     uniqueID: 0

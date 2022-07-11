@@ -6,11 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {   
-    public float restartDelay = 2f;
     public GameObject completeLevelUI;
     public GameObject failLevelUI;
     public GameObject[] enemyCount;
-    public WeaponMovement movement;
     public Shooting shooting;
 
     public GameObject enemy1;
@@ -18,7 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject enemy3;
     public int mod = 0;
     void Start(){
-        int index = SceneManager.GetActiveScene().buildIndex;
+        int index = SceneManager.GetActiveScene().buildIndex -1;
         mod = index % 4;
         if(index/4 == 0){
             if(mod == 0){
@@ -146,13 +144,12 @@ public class GameManager : MonoBehaviour
         }
     }
     public void LevelCompleted(){
-        shooting.enabled = false;
+        //shooting.enabled = false;
         completeLevelUI.SetActive(true);
     }
      void FixedUpdate(){
         enemyCount = GameObject.FindGameObjectsWithTag("Enemy");
        if(enemyCount.Length == 0){
-            movement.enabled = false;
             LevelCompleted();
         }
     }
@@ -175,10 +172,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         if(enemyCount.Length != 0){
             failLevelUI.SetActive(true);
-            Invoke("Restart",restartDelay);
         }
-    }
-    void Restart(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

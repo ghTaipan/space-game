@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2890613814333554222}
   - component: {fileID: 3097135912532796468}
   - component: {fileID: 3887384780593405785}
+  - component: {fileID: -5471138762565018515}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullet
@@ -124,7 +125,7 @@ BoxCollider2D:
   m_Offset: {x: 0.003991604, y: 0.12072149}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0.5}
     oldSize: {x: 12.92, y: 4.45}
     newSize: {x: 12.92, y: 4.45}
     adaptiveTilingThreshold: 0.5
@@ -233,3 +234,16 @@ TrailRenderer:
   m_MinVertexDistance: 1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &-5471138762565018515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163081359917880039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff6f5f11411fe344a81c9645455edd43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathEffect: {fileID: 9021405944867419237, guid: 1d4919ceedd505041a6da955c0faed3b, type: 3}

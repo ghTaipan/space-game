@@ -1,21 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Shooting : MonoBehaviour
 {
     
     public Transform firePoint;
     public GameObject bulletPreFab;
+
+    public GameObject[] ammo;
     public WeaponMovement movement;
     public float bulletForce = 20f;
-    public float ammo = 4f;
+    public int ammoCount = 4;
+    int index = 0;
+    void Start(){
+        ammo = GameObject.FindGameObjectsWithTag("Ammo");
+        SortArray(ammo);
+    }
+    void SortArray(GameObject[] ammo){
+        GameObject temp;
+        for(int i = 0 ; i< ammo.Length-1; i++){
+            if(string.Compare(ammo[i].name,ammo[i+1].name) > 0 ){
+                temp = ammo[i+1];
+                ammo[i+1] = ammo[i];
+                ammo[i] = temp;
+                SortArray(ammo);
+            }
+        }
+    }
     void Update()
     {
-        if(Input.GetButtonDown("Fire1") && ammo > 0){
+        if(Input.GetButtonDown("Fire1") && ammoCount > 0){
             Shoot();
-            ammo --;
-            if(ammo <= 0){
+            Destroy(ammo[index]);
+            index ++;
+            ammoCount --;
+            if(ammoCount <= 0){
                 movement.enabled = false;
                 FindObjectOfType<GameManager>().LevelFailed();
             }

@@ -5,29 +5,42 @@ using UnityEngine;
 public class WeaponMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
-    public Camera cam;
-    Vector2 mousePos;
+    public Shooting shooting;
+    private Animator weaponAnimator;
+    int rot = 90;
+    
+    bool waited = false;
  
     // Update is called once per frame
-    void Update()
-    {
-    mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+    void Start(){
+        weaponAnimator = GetComponent<Animator>();
+        weaponAnimator.SetTrigger("TriOn");
+        shooting.enabled = false;
+        Invoke("enableShooting",1.3f);
+        
+    }
+    void enableShooting(){
+         shooting.enabled = true;
+         waited = true;
+    }
+    public void Exit(){
+        shooting.enabled = false;
+        weaponAnimator.SetTrigger("TriOff");
+        Invoke("destoryWP",1f);
+    }
+    void destoryWP(){
+        Destroy(gameObject);
     }
     void FixedUpdate()
     {
-        Vector2 lookDir = mousePos - rb.position;
-        float angle = Mathf.Atan2(lookDir.y,lookDir.x)* Mathf.Rad2Deg - 90f;
-
-        if(angle>= -90f){
-            rb.rotation = angle;
-        }
-        else if (angle< -90f && rb.rotation > 0){
-            rb.rotation = 90f;
-        }
-        else{}{
-            if(angle < -90f && rb. rotation<0){
-                 rb.rotation = -90f;
+        if(waited == true){
+            if (rb.rotation > 60 || rb.rotation < -60){
+                rot *= -1;
+                gameObject.transform.Rotate(0,0,rot* (Time.deltaTime*1.5f));
             }
-        }
+            else{
+                gameObject.transform.Rotate(0,0,rot* (Time.deltaTime*1.5f));
+             }
+        }  
     }
 }

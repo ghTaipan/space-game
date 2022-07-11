@@ -143,6 +143,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathEffect: {fileID: 9021405944867419237, guid: 1d4919ceedd505041a6da955c0faed3b, type: 3}
+  movement: {x: 0, y: 0}
+  movement2: {x: 0, y: 0}
+  movement3: {x: 0, y: 0}
 --- !u!50 &5917945447115539181
 Rigidbody2D:
   serializedVersion: 4
@@ -162,5 +165,5 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
