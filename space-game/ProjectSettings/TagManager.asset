@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Ammo
   - Laser
+  - LevelButton
   layers:
   - Default
   - TransparentFX

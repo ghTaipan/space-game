@@ -154,22 +154,9 @@ public class GameManager : MonoBehaviour
         }
     }
     public void LevelFailed(){;
-        if(enemy1 != null){
-            Rigidbody2D rb1 = enemy1.GetComponent(typeof (Rigidbody2D)) as Rigidbody2D;
-            Destroy(rb1);
-        }
-        if(enemy2 != null){
-            Rigidbody2D rb2 = enemy2.GetComponent(typeof (Rigidbody2D)) as Rigidbody2D;
-            Destroy(rb2);
-        }
-        if(enemy3 != null){
-            Rigidbody2D rb3 = enemy3.GetComponent(typeof (Rigidbody2D)) as Rigidbody2D;
-            Destroy(rb3);
-        }
-        StartCoroutine(WaitForLevelFailed(0.5f));
+        Invoke("WaitForLevelFailed",0.7f);
     }
-     IEnumerator WaitForLevelFailed(float seconds){
-        yield return new WaitForSeconds(seconds);
+     void WaitForLevelFailed(){
         if(enemyCount.Length != 0){
             failLevelUI.SetActive(true);
         }

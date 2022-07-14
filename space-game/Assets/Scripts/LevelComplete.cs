@@ -18,7 +18,12 @@ public class LevelComplete : MonoBehaviour
     player.Exit();
   }
   void wait(){
-    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    int sceeneIndex = SceneManager.GetActiveScene().buildIndex;
+
+    if(SaveSystem.LoadLevel() <= sceeneIndex && sceeneIndex != 16){
+      SaveSystem.SaveLevel(sceeneIndex + 1);
+    }
+    SceneManager.LoadScene(sceeneIndex + 1);
   }
 
 }

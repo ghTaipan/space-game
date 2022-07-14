@@ -39,6 +39,7 @@ public class Shooting : MonoBehaviour
             if(ammoCount <= 0){
                 movement.enabled = false;
                 FindObjectOfType<GameManager>().LevelFailed();
+                enabled = false;
             }
         }
     }
