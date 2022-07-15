@@ -42,7 +42,6 @@ public class ChooseLevel : MonoBehaviour
     }
     void activateLevel(){
         int Highestlevel = SaveSystem.LoadLevel();
-        Debug.Log(Highestlevel);
         for(int i = 0; i< Highestlevel;i++){
             levelButtons[i].SetActive(true);
         }

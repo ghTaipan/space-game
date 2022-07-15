@@ -9,6 +9,7 @@ TagManager:
   - Ammo
   - Laser
   - LevelButton
+  - GameMusic
   layers:
   - Default
   - TransparentFX

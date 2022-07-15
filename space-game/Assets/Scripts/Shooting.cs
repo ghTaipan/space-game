@@ -14,9 +14,11 @@ public class Shooting : MonoBehaviour
     public float bulletForce = 20f;
     public int ammoCount = 4;
     int index = 0;
+    AudioSource shooting_audio;
     void Start(){
         ammo = GameObject.FindGameObjectsWithTag("Ammo");
         SortArray(ammo);
+        shooting_audio = GetComponent<AudioSource>();
     }
     void SortArray(GameObject[] ammo){
         GameObject temp;
@@ -32,16 +34,28 @@ public class Shooting : MonoBehaviour
     void Update()
     {
         if(Input.GetButtonDown("Fire1") && ammoCount > 0){
+            PlaySound();
             Shoot();
             Destroy(ammo[index]);
             index ++;
             ammoCount --;
-            if(ammoCount <= 0){
+        }
+    }
+    void PlaySound(){
+        if(shooting_audio.isPlaying){
+            shooting_audio.Stop();
+            shooting_audio.Play();
+        }
+        else{
+            shooting_audio.Play();
+        }
+    }
+    void FixedUpdate(){
+         if(ammoCount <= 0){
                 movement.enabled = false;
                 FindObjectOfType<GameManager>().LevelFailed();
                 enabled = false;
             }
-        }
     }
     void Shoot(){
         GameObject bullet = Instantiate(bulletPreFab,firePoint.position,firePoint.rotation);
