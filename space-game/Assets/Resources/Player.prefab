@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathEffect: {fileID: 9021405944867419237, guid: 1d4919ceedd505041a6da955c0faed3b, type: 3}
+  deathSound: {fileID: 7361977291853791075, guid: 9643db7725d7bf144b2632720f9ed0ae, type: 3}
 --- !u!61 &8403397195026841503
 BoxCollider2D:
   m_ObjectHideFlags: 0

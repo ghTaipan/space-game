@@ -6,8 +6,8 @@ public class Enemy4 : Enemy2
 {
     void Start(){
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        movement.y = -1.5f;
-        movement.x = -1.5f;
+        movement.y = -1.2f;
+        movement.x = -1.8f;
 
         movement2 = movement;
         movement3 = movement;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using System;
 
 public class Shooting : MonoBehaviour
@@ -34,14 +35,16 @@ public class Shooting : MonoBehaviour
     void Update()
     {
         if(Input.GetButtonDown("Fire1") && ammoCount > 0){
-            PlaySound();
-            Shoot();
-            Destroy(ammo[index]);
-            index ++;
-            ammoCount --;
+            if(EventSystem.current.currentSelectedGameObject == null || EventSystem.current.currentSelectedGameObject.tag != "SoundButton"){
+                PlaySound();
+                Shoot();
+                Destroy(ammo[index]);
+                index ++;
+                ammoCount --;
+            }
         }
     }
-    void PlaySound(){
+        void PlaySound(){
         if(shooting_audio.isPlaying){
             shooting_audio.Stop();
             shooting_audio.Play();

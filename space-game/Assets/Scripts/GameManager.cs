@@ -9,11 +9,11 @@ public class GameManager : MonoBehaviour
     public GameObject completeLevelUI;
     public GameObject failLevelUI;
     public GameObject[] enemyCount;
-    public Shooting shooting;
-
+    public GameObject player;
     public GameObject enemy1;
     public GameObject enemy2;
     public GameObject enemy3;
+    public GameObject enemyWeapon;
     public int mod = 0;
     void Start(){
         int index = SceneManager.GetActiveScene().buildIndex -1;
@@ -144,7 +144,9 @@ public class GameManager : MonoBehaviour
         }
     }
     public void LevelCompleted(){
-        //shooting.enabled = false;
+        if(player.gameObject != null){
+            completeLevelUI.SetActive(true);
+        }
         completeLevelUI.SetActive(true);
     }
      void FixedUpdate(){
@@ -158,7 +160,42 @@ public class GameManager : MonoBehaviour
     }
      void WaitForLevelFailed(){
         if(enemyCount.Length != 0){
-            failLevelUI.SetActive(true);
+            if( player != null){
+                KillPlayer();
+            }
+            else{
+                failLevelUI.SetActive(true);
+            }
+        }
+    }
+    public void KillPlayer(){
+        if(enemy1 != null){
+              Destroy(enemy1.GetComponent<Rigidbody2D>());
+        }
+        if(enemy2 != null){
+              Destroy(enemy2.GetComponent<Rigidbody2D>());
+        }
+        if(enemy3 != null){
+            Destroy(enemy3.GetComponent<Rigidbody2D>());
+            Vector3 weaponTr = enemy3.GetComponent<Transform>().position;
+            Quaternion weaponRt = enemy3.GetComponent<Transform>().rotation;
+            weaponTr.y = weaponTr.y + 0.2f;
+            weaponRt.z = weaponRt.z + 180;
+            Instantiate(enemyWeapon,weaponTr, weaponRt);
+        }
+        else if(enemy2 != null){
+            Vector3 weaponTr = enemy2.GetComponent<Transform>().position;
+            Quaternion weaponRt = enemy2.GetComponent<Transform>().rotation;
+            weaponTr.y = weaponTr.y + 0.2f;
+            weaponRt.z = weaponRt.z + 180;
+            Instantiate(enemyWeapon,weaponTr, weaponRt);
+        }
+        else if (enemy1 != null){
+            Vector3 weaponTr = enemy1.GetComponent<Transform>().position;
+            Quaternion weaponRt = enemy1.GetComponent<Transform>().rotation;
+            weaponTr.y = weaponTr.y + 0.2f;
+            weaponRt.z = weaponRt.z + 180;
+            Instantiate(enemyWeapon,weaponTr, weaponRt);
         }
     }
 }

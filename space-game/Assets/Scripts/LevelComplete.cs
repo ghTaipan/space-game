@@ -19,7 +19,9 @@ public class LevelComplete : MonoBehaviour
   }
   void wait(){
     int sceeneIndex = SceneManager.GetActiveScene().buildIndex;
-
+    if(sceeneIndex ==4 || sceeneIndex == 8 || sceeneIndex == 12){
+      FindObjectOfType<DoNotDestory>().nextMusic = false;
+    }
     if(SaveSystem.LoadLevel() <= sceeneIndex && sceeneIndex != 16){
       SaveSystem.SaveLevel(sceeneIndex + 1);
     }

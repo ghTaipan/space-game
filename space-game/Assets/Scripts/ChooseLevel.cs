@@ -9,12 +9,18 @@ public class ChooseLevel : MonoBehaviour
     public GameObject MainMenu;
     public GameObject[] levelButtons;
     public MainMenu mm;
+    public GameObject fadeOut;
+    public GameObject clickSound;
+    Vector3 soundPosition;
     public void Start(){
         levelButtons = GameObject.FindGameObjectsWithTag("LevelButton");
         SortArray();
         deactivateButtons();
         MainMenu.SetActive(false);
         activateLevel();
+        soundPosition.x = 0;
+        soundPosition.y = 0;
+        soundPosition.z = 0;
     }
     void SortArray(){
         GameObject temp;
@@ -33,6 +39,13 @@ public class ChooseLevel : MonoBehaviour
         }
     }
     public void activateScene(){
+        fadeOut.SetActive(true);
+        fadeOut.GetComponent<Animator>().SetTrigger("Level");
+        Instantiate(clickSound,soundPosition,Quaternion.identity);
+        Invoke("destroySound",0.3f);
+        Invoke("waitActivateScene",0.7f);
+    }
+    void waitActivateScene(){
         string buttonName = EventSystem.current.currentSelectedGameObject.name;
         for(int i = 0 ; i<levelButtons.Length;i++){
             if(levelButtons[i].name.Equals(buttonName)){
@@ -48,7 +61,15 @@ public class ChooseLevel : MonoBehaviour
       
     }
     public void BackToMainMenu(){
+        Instantiate(clickSound,soundPosition,Quaternion.identity);
+        Invoke("destroySound",0.3f);
         MainMenu.SetActive(true);
         mm.Start();
+    }
+    void destroySound(){
+        GameObject[] sounds = GameObject.FindGameObjectsWithTag("ClickSound");
+        for(int i = 0;i<sounds.Length;i++){
+            Destroy(sounds[i]);
+        }
     }
 }

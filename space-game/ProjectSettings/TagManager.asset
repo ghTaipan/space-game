@@ -10,6 +10,9 @@ TagManager:
   - Laser
   - LevelButton
   - GameMusic
+  - SoundButton
+  - Undefined
+  - ClickSound
   layers:
   - Default
   - TransparentFX
