@@ -8,11 +8,13 @@ public class ChooseLevel : MonoBehaviour
 {
     public GameObject MainMenu;
     public GameObject[] levelButtons;
-    public MainMenu mm;
     public GameObject fadeOut;
     public GameObject clickSound;
+    private Animator levelAnim;
+    public MainMenu mm;
     Vector3 soundPosition;
     public void Start(){
+        levelAnim = GetComponent<Animator>();
         levelButtons = GameObject.FindGameObjectsWithTag("LevelButton");
         SortArray();
         deactivateButtons();
@@ -21,6 +23,9 @@ public class ChooseLevel : MonoBehaviour
         soundPosition.x = 0;
         soundPosition.y = 0;
         soundPosition.z = 0;
+    }
+    public void playAnim(){
+        levelAnim.SetTrigger("LevelPanelOn");
     }
     void SortArray(){
         GameObject temp;
@@ -61,8 +66,12 @@ public class ChooseLevel : MonoBehaviour
       
     }
     public void BackToMainMenu(){
+        levelAnim.SetTrigger("MMOn");
         Instantiate(clickSound,soundPosition,Quaternion.identity);
         Invoke("destroySound",0.3f);
+         Invoke("waitMM",0.7f);
+    }
+    void waitMM(){
         MainMenu.SetActive(true);
         mm.Start();
     }

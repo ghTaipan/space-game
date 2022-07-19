@@ -9,14 +9,19 @@ public class WeaponMovement : MonoBehaviour
     private Animator weaponAnimator;
     int rot = 90;
     
-    bool waited = false;
+    public bool waited = false;
  
     // Update is called once per frame
-    void Start(){
+    public void Start(){
         weaponAnimator = GetComponent<Animator>();
         weaponAnimator.SetTrigger("TriOn");
         shooting.enabled = false;
-        Invoke("enableShooting",1.3f);
+        if(weaponAnimator.isActiveAndEnabled){
+            Invoke("enableShooting",1.3f);
+        }
+        else{
+            waited = true;
+        }
         
     }
     void enableShooting(){

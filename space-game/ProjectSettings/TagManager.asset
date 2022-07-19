@@ -13,6 +13,8 @@ TagManager:
   - SoundButton
   - Undefined
   - ClickSound
+  - NextButton
+  - BackButton
   layers:
   - Default
   - TransparentFX
