@@ -2,25 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : ShipParrent
 {
-
-    public GameObject deathEffect;
-    public GameObject deathSound;
-
-    public virtual void Die()
-    {
-        GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
-        Instantiate(deathSound,transform.position, Quaternion.identity);
-        Destroy(effect,0.3f);
-        Destroy(gameObject);
-        deathSound.SetActive(true);
-
+        public override void Die(){
+        base.Die();
     }
-    public virtual void OnCollisionEnter2D(Collision2D collisionInfo ){
-        if(collisionInfo.collider.tag == "Bullet"){
-            Die();
-            Destroy(collisionInfo.collider.gameObject);
-        }
+    public override void OnCollisionEnter2D(Collision2D collisionInfo ){
+        base.OnCollisionEnter2D(collisionInfo);
     }
 }

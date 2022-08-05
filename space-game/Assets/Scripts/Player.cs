@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : ShipParrent
 {
-    public GameObject deathEffect;
-    public GameObject deathSound;
     private Animator playerAnimator;
     void Start(){
         playerAnimator = GetComponent<Animator>();
@@ -14,15 +12,12 @@ public class Player : MonoBehaviour
     public void Exit(){
         playerAnimator.SetTrigger("TriExit");
     }
-    public virtual void Die()
+    public override void Die()
     {
-        GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
-        Instantiate(deathSound, transform.position, Quaternion.identity);
-        Destroy(effect,0.3f);
-        Destroy(gameObject);
+        base.Die();
         Destroy(FindObjectOfType<WeaponMovement>().gameObject);
     }
-    public virtual void OnCollisionEnter2D(Collision2D collisionInfo ){
+    public override void OnCollisionEnter2D(Collision2D collisionInfo ){
         if(collisionInfo.collider.tag == "Enemy"){
             Die();
             FindObjectOfType<GameManager>().LevelFailed();

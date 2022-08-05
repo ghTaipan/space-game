@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7361977291853791072}
   m_Layer: 0
   m_Name: DeathSound
-  m_TagString: Untagged
+  m_TagString: DeathSound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,7 +41,7 @@ AudioSource:
   m_GameObject: {fileID: 7361977291853791075}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -6904176824987029886, guid: ee60781596b429347a9a8206a6e8ca79, type: 2}
   m_audioClip: {fileID: 8300000, guid: 574e0de5d6badbf4fb75c504dc8a6cb4, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.492

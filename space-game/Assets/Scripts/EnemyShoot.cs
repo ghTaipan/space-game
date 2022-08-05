@@ -10,7 +10,7 @@ public class EnemyShoot : MonoBehaviour
     public float bulletForce = 20f;
     AudioSource shooting_audio;
     void Start(){
-         Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
         Vector2 dir = player.GetComponent<Transform>().position - gameObject.GetComponent<Transform>().position;
         rb.rotation = Mathf.Atan2(dir.y, dir.x)*Mathf.Rad2Deg - 90f;
         shooting_audio = GetComponent<AudioSource>();

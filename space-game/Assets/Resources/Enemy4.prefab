@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4971693782045756426}
   - component: {fileID: 1521977017086706725}
   - component: {fileID: -5110653457277021221}
+  - component: {fileID: -4460432542789768302}
   m_Layer: 0
   m_Name: Enemy4
   m_TagString: Enemy
@@ -151,3 +152,19 @@ MonoBehaviour:
   movement: {x: 0, y: 0}
   movement2: {x: 0, y: 0}
   movement3: {x: 0, y: 0}
+--- !u!111 &-4460432542789768302
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4999217231733019135}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 57f915c4371e6a54998cce8a0b1b2516, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 57f915c4371e6a54998cce8a0b1b2516, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0

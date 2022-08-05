@@ -16,8 +16,7 @@ public class TutorialShooting : MonoBehaviour
     void Update()
     {
         if(Input.GetButtonDown("Fire1") ){
-            if(EventSystem.current.currentSelectedGameObject == null || (EventSystem.current.currentSelectedGameObject.tag != "NextButton" 
-                && EventSystem.current.currentSelectedGameObject.tag != "BackButton")){
+            if(EventSystem.current.currentSelectedGameObject == null || (EventSystem.current.currentSelectedGameObject.tag != "Button")){
                     PlaySound();
                     Shoot();
             }

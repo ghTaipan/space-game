@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy3 : Enemy
 {
     Vector2 movement;
-    void Start(){
+    public void Start(){
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         movement.y = -1.5f;
         rb.velocity = movement;

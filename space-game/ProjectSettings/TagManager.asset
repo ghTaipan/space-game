@@ -15,6 +15,9 @@ TagManager:
   - ClickSound
   - NextButton
   - BackButton
+  - DeathSound
+  - PlasmaBall
+  - Button
   layers:
   - Default
   - TransparentFX
@@ -55,15 +58,21 @@ TagManager:
   - name: player-screen
     uniqueID: 368752597
     locked: 0
-  - name: Laser
-    uniqueID: 501092397
-    locked: 0
-  - name: laser-ball
-    uniqueID: 2340956377
+  - name: ammo
+    uniqueID: 2187503853
     locked: 0
   - name: Weapon
     uniqueID: 1782863079
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: esc-panel
+    uniqueID: 3209756613
+    locked: 0
+  - name: Laser
+    uniqueID: 501092397
+    locked: 0
+  - name: laser-ball
+    uniqueID: 2340956377
     locked: 0

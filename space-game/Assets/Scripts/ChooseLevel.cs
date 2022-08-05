@@ -4,16 +4,16 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using System.IO;
-public class ChooseLevel : MonoBehaviour
+public class ChooseLevel : UIParrent
 {
     public GameObject MainMenu;
     public GameObject[] levelButtons;
     public GameObject fadeOut;
     public GameObject clickSound;
     private Animator levelAnim;
-    public MainMenu mm;
-    Vector3 soundPosition;
+    string buttonName;
     public void Start(){
+        buttonClicked = false;
         levelAnim = GetComponent<Animator>();
         levelButtons = GameObject.FindGameObjectsWithTag("LevelButton");
         SortArray();
@@ -44,6 +44,8 @@ public class ChooseLevel : MonoBehaviour
         }
     }
     public void activateScene(){
+        buttonName = EventSystem.current.currentSelectedGameObject.name;
+        buttonClicked = true;
         fadeOut.SetActive(true);
         fadeOut.GetComponent<Animator>().SetTrigger("Level");
         Instantiate(clickSound,soundPosition,Quaternion.identity);
@@ -51,34 +53,38 @@ public class ChooseLevel : MonoBehaviour
         Invoke("waitActivateScene",0.7f);
     }
     void waitActivateScene(){
-        string buttonName = EventSystem.current.currentSelectedGameObject.name;
         for(int i = 0 ; i<levelButtons.Length;i++){
             if(levelButtons[i].name.Equals(buttonName)){
-                SceneManager.LoadScene(i+1);
+                FindObjectOfType<DoNotDestory>().levelNumber = i;
+                SceneManager.LoadScene((i/4)+1);
             }
         }
     }
     void activateLevel(){
         int Highestlevel = SaveSystem.LoadLevel();
+        if(Highestlevel == 0){
+            Highestlevel = 1;
+        }
         for(int i = 0; i< Highestlevel;i++){
             levelButtons[i].SetActive(true);
         }
       
     }
     public void BackToMainMenu(){
+        buttonClicked = true;
         levelAnim.SetTrigger("MMOn");
         Instantiate(clickSound,soundPosition,Quaternion.identity);
         Invoke("destroySound",0.3f);
-         Invoke("waitMM",0.7f);
+        Invoke("waitMM",0.7f);
     }
     void waitMM(){
         MainMenu.SetActive(true);
-        mm.Start();
+        MainMenu.GetComponent<MainMenu>().Start();
     }
-    void destroySound(){
-        GameObject[] sounds = GameObject.FindGameObjectsWithTag("ClickSound");
-        for(int i = 0;i<sounds.Length;i++){
-            Destroy(sounds[i]);
-        }
+    public override void destroySound(){
+        base.destroySound();
+    }
+    public override void FixedUpdate(){
+        base.FixedUpdate();
     }
 }

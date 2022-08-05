@@ -1,23 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class MainMenu : UIParrent
 {
     public GameObject LevelPanel;
     public GameObject TutorialPanel;
+    public GameObject AudioPanel;
     public GameObject fadeIn;
     public GameObject fadeOut;
     public GameObject player;
     public GameObject clickSound;
-    public ChooseLevel cl;
-    public Tutorial Tut;
+    public GameObject ContinueButton;
     private Animator MManim;
-    Vector3 soundPosition;
     public void Start(){
+        SaveSystem.LoadLevel();
         MManim = GetComponent<Animator>();
-        MManim.SetTrigger("MainMenuOn");
+        if(TutorialPanel || LevelPanel){
+            playAnimMM();
+        }
+        else{
+            Invoke("playAnimMM",0.3f);
+        }
+        buttonClicked = false;
+        //MManim = GetComponent<Animator>();
+        //MManim.SetTrigger("MainMenuOn");
         LevelPanel.SetActive(false);
         TutorialPanel.SetActive(false);
         Invoke("destroyFade",1f);
@@ -25,7 +34,16 @@ public class MainMenu : MonoBehaviour
         soundPosition.y = 0;
         soundPosition.z = 0;
     }
+    void playAnimMM(){
+        if(SaveSystem.LoadLevel() == 0){
+            MManim.SetTrigger("MainMenuOn");
+        }
+        else{
+             MManim.SetTrigger("MainMenuOn2");
+        }
+    }
     public void newGame(){
+        buttonClicked = true;
         Instantiate(clickSound,soundPosition,Quaternion.identity);
         Invoke("destroySound",0.3f);
         player.SetActive(true);
@@ -34,45 +52,90 @@ public class MainMenu : MonoBehaviour
         Invoke("waitNewGame",2f);
     }
     void waitNewGame(){
+        FindObjectOfType<DoNotDestory>().levelNumber = 0;
         SaveSystem.SaveLevel(1);
         SceneManager.LoadScene(1);
     }
+    public void Continue(){
+        buttonClicked = true;
+        Instantiate(clickSound,soundPosition,Quaternion.identity);
+        Invoke("destroySound",0.3f);
+        player.SetActive(true);
+        fadeOut.SetActive(true);
+        fadeOut.GetComponent<Animator>().SetTrigger("NewGame");
+        Invoke("waitContinue",2f);
+    }
+    void waitContinue(){
+        FindObjectOfType<DoNotDestory>().levelNumber = SaveSystem.LoadLevel()-1;
+        if(SaveSystem.LoadLevel() == 4 || SaveSystem.LoadLevel()  == 8 || SaveSystem.LoadLevel() == 12 || SaveSystem.LoadLevel() == 16  ){
+            SceneManager.LoadScene((SaveSystem.LoadLevel()/4));
+        }
+        else{
+            SceneManager.LoadScene((SaveSystem.LoadLevel()/4 + 1));
+        }
+    }
     public void Quit(){
+        //SaveSystem.SaveLevel(0); To test if continue button does not appear when the game is played for the first time.
         Instantiate(clickSound,soundPosition,Quaternion.identity);
         Invoke("destroySound",0.3f);
         Application.Quit();
     }
     
     public void Level(){
+        buttonClicked = true;
         Instantiate(clickSound,soundPosition,Quaternion.identity);
         Invoke("destroySound",0.3f);
-        MManim.SetTrigger("LevelButtonOn");
-        Invoke("WaitLevel",0.8f);
+        LTAnim();
+        Invoke("WaitLevel",0.67f);
     }
     void WaitLevel(){
         LevelPanel.SetActive(true);
-        cl.Start();
-        cl.playAnim();
+        LevelPanel.GetComponent<ChooseLevel>().Start();
+        LevelPanel.GetComponent<ChooseLevel>().playAnim();
     }
     public void Tutorial(){
+        buttonClicked = true;
         Instantiate(clickSound,soundPosition,Quaternion.identity);
         Invoke("destroySound",0.3f);
-        MManim.SetTrigger("TutorialButtonOn");
-        Invoke("waitTutorial",0.6f);
+        LTAnim();
+        Invoke("waitTutorial",0.67f);
+    }
+    void LTAnim(){
+        if(SaveSystem.LoadLevel() <= 0 ){
+            MManim.SetTrigger("LTButtonOn2");
+        }
+        else{
+             MManim.SetTrigger("LTButtonOn");
+        }
     }
     void waitTutorial(){
-        Tut.Start();
         TutorialPanel.SetActive(true); 
-        Tut.playAnim();
+        TutorialPanel.GetComponent<Tutorial>().Start();
+        TutorialPanel.GetComponent<Tutorial>().playAnim();
         
+    }
+    public void Audio(){
+        Instantiate(clickSound,soundPosition,Quaternion.identity);
+        AudioPanel.SetActive(true);
+        Invoke("destroySound",0.3f);
+        AudioPanel.GetComponent<Animator>().SetTrigger("APOn");
+    }
+    public void AudioOff(){
+        Instantiate(clickSound,soundPosition,Quaternion.identity);
+        Invoke("destroySound",0.3f);
+        AudioPanel.GetComponent<Animator>().SetTrigger("APOff");
+        Invoke("waitAudioOff",0.5f);
+    }
+    void waitAudioOff(){
+         AudioPanel.SetActive(false);
     }
     void destroyFade(){
         Destroy(fadeIn);
     }
-    void destroySound(){
-        GameObject[] sounds = GameObject.FindGameObjectsWithTag("ClickSound");
-        for(int i = 0;i<sounds.Length;i++){
-            Destroy(sounds[i]);
-        }
+    public override void destroySound(){
+        base.destroySound();
+    }
+    public override void FixedUpdate(){
+        base.FixedUpdate();
     }
 }

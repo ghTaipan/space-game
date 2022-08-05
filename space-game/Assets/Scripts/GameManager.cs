@@ -14,9 +14,13 @@ public class GameManager : MonoBehaviour
     public GameObject enemy2;
     public GameObject enemy3;
     public GameObject enemyWeapon;
+    public GameObject LoadScene;
+    public bool lose = false;
     public int mod = 0;
-    void Start(){
-        int index = SceneManager.GetActiveScene().buildIndex -1;
+    public void Start(){
+        FindObjectOfType<EscPanel>().GetComponent<EscPanel>().enabled = false;
+        Invoke("waitLoadScreen",1.5f);
+        int index = FindObjectOfType<DoNotDestory>().levelNumber ;
         mod = index % 4;
         if(index/4 == 0){
             if(mod == 0){
@@ -83,71 +87,80 @@ public class GameManager : MonoBehaviour
         else if( index/4 == 2){
              if(mod == 0){
                 enemy1 = Instantiate(Resources.Load("Enemy3")) as GameObject;
-                enemy1.transform.position = new Vector3 (0,2.4f,0);
+                enemy1.transform.position = new Vector3 (0,3.4f,0);
             }
             else if (mod == 1){
                 enemy1 = Instantiate(Resources.Load("Enemy3")) as GameObject;
                 enemy1.transform.localScale = new Vector3(0.66f,0.66f,1);
-                enemy1.transform.position = new Vector3 (0,2.4f,0);
+                enemy1.transform.position = new Vector3 (0,3.4f,0);
             }
             else if (mod == 2){
                 enemy1 = Instantiate(Resources.Load("Enemy3")) as GameObject;
                 enemy1.transform.localScale = new Vector3(0.66f,0.66f,1);
-                enemy1.transform.position = new Vector3 (-0.7f,2.40f,0);
+                enemy1.transform.position = new Vector3 (-0.7f,3.40f,0);
                 enemy2 = Instantiate(Resources.Load("Enemy3")) as GameObject;
                 enemy2.transform.localScale = new Vector3(0.66f,0.66f,1);
-                enemy2.transform.position = new Vector3 (0.7f,2.40f,0);
+                enemy2.transform.position = new Vector3 (0.7f,3.40f,0);
             }
             else{
                 enemy1 = Instantiate(Resources.Load("Enemy3")) as GameObject;
                 enemy1.transform.localScale = new Vector3(0.66f,0.66f,1);
-                enemy1.transform.position = new Vector3 (-0.7f,2.40f,0);
+                enemy1.transform.position = new Vector3 (-0.7f,3.40f,0);
                 enemy2 = Instantiate(Resources.Load("Enemy3")) as GameObject;
                 enemy2.transform.localScale = new Vector3(0.66f,0.66f,1);
-                enemy2.transform.position = new Vector3 (0.7f,2.40f,0);
+                enemy2.transform.position = new Vector3 (0.7f,3.40f,0);
                 enemy3 = Instantiate(Resources.Load("Enemy3")) as GameObject;
                 enemy3.transform.localScale = new Vector3(0.66f,0.66f,1);
-                enemy3.transform.position = new Vector3 (0,1.2f,0);
+                enemy3.transform.position = new Vector3 (0,2.2f,0);
+
+            }
+        }
+        else if(index/4 == 3){
+            if(mod == 0){
+                enemy1 = Instantiate(Resources.Load("Enemy4")) as GameObject;
+                enemy1.transform.position = new Vector3 (0,3.4f,0);
+            }
+            else if (mod == 1){
+                enemy1 = Instantiate(Resources.Load("Enemy4")) as GameObject;
+                enemy1.transform.localScale = new Vector3(0.66f,0.66f,1);
+                enemy1.transform.position = new Vector3 (0,3.4f,0);
+            }
+            else if (mod == 2){
+                enemy1 = Instantiate(Resources.Load("Enemy4")) as GameObject;
+                enemy1.transform.localScale = new Vector3(0.66f,0.66f,1);
+                enemy1.transform.position = new Vector3 (-0.7f,3.40f,0);
+                enemy2 = Instantiate(Resources.Load("Enemy4")) as GameObject;
+                enemy2.transform.localScale = new Vector3(0.66f,0.66f,1);
+                enemy2.transform.position = new Vector3 (0.7f,3.40f,0);
+            }
+            else{
+                enemy1 = Instantiate(Resources.Load("Enemy4")) as GameObject;
+                enemy1.transform.localScale = new Vector3(0.66f,0.66f,1);
+                enemy1.transform.position = new Vector3 (-0.7f,3.40f,0);
+                enemy2 = Instantiate(Resources.Load("Enemy4")) as GameObject;
+                enemy2.transform.localScale = new Vector3(0.66f,0.66f,1);
+                enemy2.transform.position = new Vector3 (0.7f,3.40f,0);
+                enemy3 = Instantiate(Resources.Load("Enemy4")) as GameObject;
+                enemy3.transform.localScale = new Vector3(0.66f,0.66f,1);
+                enemy3.transform.position = new Vector3 (0,2.2f,0);
 
             }
         }
         else{
-            if(mod == 0){
-                enemy1 = Instantiate(Resources.Load("Enemy4")) as GameObject;
-                enemy1.transform.position = new Vector3 (0,2.4f,0);
-            }
-            else if (mod == 1){
-                enemy1 = Instantiate(Resources.Load("Enemy4")) as GameObject;
-                enemy1.transform.localScale = new Vector3(0.66f,0.66f,1);
-                enemy1.transform.position = new Vector3 (0,2.4f,0);
-            }
-            else if (mod == 2){
-                enemy1 = Instantiate(Resources.Load("Enemy4")) as GameObject;
-                enemy1.transform.localScale = new Vector3(0.66f,0.66f,1);
-                enemy1.transform.position = new Vector3 (-0.7f,2.40f,0);
-                enemy2 = Instantiate(Resources.Load("Enemy4")) as GameObject;
-                enemy2.transform.localScale = new Vector3(0.66f,0.66f,1);
-                enemy2.transform.position = new Vector3 (0.7f,2.40f,0);
-            }
-            else{
-                enemy1 = Instantiate(Resources.Load("Enemy4")) as GameObject;
-                enemy1.transform.localScale = new Vector3(0.66f,0.66f,1);
-                enemy1.transform.position = new Vector3 (-0.7f,2.40f,0);
-                enemy2 = Instantiate(Resources.Load("Enemy4")) as GameObject;
-                enemy2.transform.localScale = new Vector3(0.66f,0.66f,1);
-                enemy2.transform.position = new Vector3 (0.7f,2.40f,0);
-                enemy3 = Instantiate(Resources.Load("Enemy4")) as GameObject;
-                enemy3.transform.localScale = new Vector3(0.66f,0.66f,1);
-                enemy3.transform.position = new Vector3 (0,1.2f,0);
-
-            }
+            SceneManager.LoadScene(5);
         }
     }
+    void waitLoadScreen(){
+        LoadScene.SetActive(false);
+        FindObjectOfType<EscPanel>().GetComponent<EscPanel>().enabled = true;
+    }
     public void LevelCompleted(){
-        if(player.gameObject != null){
+        if(player.gameObject != null && !completeLevelUI.GetComponent<LevelComplete>().LCStarted){
             completeLevelUI.SetActive(true);
+            if(completeLevelUI.GetComponent<LevelComplete>().startDebug){
+                completeLevelUI.GetComponent<LevelComplete>().Start();
+            }
         }
-        completeLevelUI.SetActive(true);
     }
      void FixedUpdate(){
         enemyCount = GameObject.FindGameObjectsWithTag("Enemy");
@@ -155,7 +168,8 @@ public class GameManager : MonoBehaviour
             LevelCompleted();
         }
     }
-    public void LevelFailed(){;
+    public void LevelFailed(){
+        FindObjectOfType<EscPanel>().enabled = false;
         Invoke("WaitForLevelFailed",0.7f);
     }
      void WaitForLevelFailed(){
@@ -169,6 +183,7 @@ public class GameManager : MonoBehaviour
         }
     }
     public void KillPlayer(){
+        lose = true;
         if(enemy1 != null){
               Destroy(enemy1.GetComponent<Rigidbody2D>());
         }

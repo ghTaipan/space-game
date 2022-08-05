@@ -167,7 +167,7 @@ AudioSource:
   m_GameObject: {fileID: 393867583178873837}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -7715583315158125035, guid: ee60781596b429347a9a8206a6e8ca79, type: 2}
   m_audioClip: {fileID: 8300000, guid: 1b5c9ddeea09f714a892788b349ddd4d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.3
@@ -288,6 +288,7 @@ MonoBehaviour:
   movement: {fileID: 393867583178873832}
   bulletForce: 20
   ammoCount: 4
+  index: 0
 --- !u!95 &393867583178873826
 Animator:
   serializedVersion: 4

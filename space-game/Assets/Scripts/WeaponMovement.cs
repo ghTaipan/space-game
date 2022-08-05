@@ -7,16 +7,17 @@ public class WeaponMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Shooting shooting;
     private Animator weaponAnimator;
-    int rot = 90;
+    int rot;
     
     public bool waited = false;
  
     // Update is called once per frame
     public void Start(){
+        rot = 90;
         weaponAnimator = GetComponent<Animator>();
-        weaponAnimator.SetTrigger("TriOn");
         shooting.enabled = false;
         if(weaponAnimator.isActiveAndEnabled){
+             weaponAnimator.SetTrigger("TriOn");
             Invoke("enableShooting",1.3f);
         }
         else{
@@ -31,11 +32,8 @@ public class WeaponMovement : MonoBehaviour
     public void Exit(){
         shooting.enabled = false;
         weaponAnimator.SetTrigger("TriOff");
-        Invoke("destoryWP",1f);
     }
-    void destoryWP(){
-        Destroy(gameObject);
-    }
+    
     void FixedUpdate()
     {
         if(waited == true){

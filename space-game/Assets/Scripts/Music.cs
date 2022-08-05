@@ -6,14 +6,14 @@ public class Music : MonoBehaviour
 {
     public GameObject SoundOff;
     public GameObject SoundOn;
+    void Start(){
+        FindObjectOfType<DoNotDestory>().SoundOff = SoundOff;
+        FindObjectOfType<DoNotDestory>().SoundOn = SoundOn;
+    }
     public void MusicOff(){
-        FindObjectOfType<DoNotDestory>().gameObject.GetComponent<AudioSource>().Stop();
-        SoundOff.SetActive(false);
-        SoundOn.SetActive(true);
+        FindObjectOfType<DoNotDestory>().MusicOff();
     }
     public void MusicOn(){
-        FindObjectOfType<DoNotDestory>().gameObject.GetComponent<AudioSource>().Play();
-        SoundOff.SetActive(true);
-        SoundOn.SetActive(false);
+        FindObjectOfType<DoNotDestory>().MusicOn();
     }
 }

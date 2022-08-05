@@ -23,8 +23,29 @@ public static class SaveSystem
             return level;
         }
         else{
-            Debug.LogError("Save file not found in "+ path);
+            SaveLevel(0);
             return -1;
+        }
+    }
+    public static void SaveAudio(VolumeSettings AudioSettings){
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath+ "/AudioData";
+        FileStream stream = new FileStream(path,FileMode.Create);
+        AudioData data = new AudioData(AudioSettings);
+        formatter.Serialize(stream,data);
+        stream.Close();
+    }
+    public static AudioData LoadAudio(){
+        string path = Application.persistentDataPath + "/AudioData";
+        if(File.Exists(path)){
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path,FileMode.Open);
+            AudioData audioData = formatter.Deserialize(stream) as AudioData;
+            stream.Close();
+            return audioData;
+        }
+        else{
+            return null;
         }
     }
 }

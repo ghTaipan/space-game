@@ -2,20 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tutorial : MonoBehaviour
+public class Tutorial : UIParrent
 {
     public GameObject ShootingTutorialPanel;
     public GameObject EnemyTutorialPanel;
     public GameObject MainMenu;
     public GameObject clickSound;
-    public MainMenu mm;
-    private Animator TutAnim;
-    public ShootingTutorial st;
-    Vector3 soundPosition;
-  
+    private Animator TutAnim;  
     public void Start(){
+        buttonClicked = false;
         MainMenu.SetActive(false);
         ShootingTutorialPanel.SetActive(false);
+        EnemyTutorialPanel.SetActive(false);
         TutAnim = GetComponent<Animator>();
         soundPosition.x = 0;
         soundPosition.y = 0;
@@ -25,37 +23,47 @@ public class Tutorial : MonoBehaviour
         TutAnim.SetTrigger("Start");
     }
     public void ShootingTutorial(){
+        buttonClicked = true;
         TutAnim.SetTrigger("Button");
-        Invoke("waitForST",1f);
+        Invoke("waitForST",1.7f);
         Instantiate(clickSound,soundPosition,Quaternion.identity);
         Invoke("destroySound",0.3f);
     }
     void waitForST(){
         ShootingTutorialPanel.SetActive(true);
-        st.Start();
-        st.WeaponMethods();
+        ShootingTutorialPanel.GetComponent<ShootingTutorial>().Start();
+        ShootingTutorialPanel.GetComponent<ShootingTutorial>().WeaponMethods();
         ShootingTutorialPanel.GetComponent<Animator>().SetTrigger("STIntro");
         ShootingTutorialPanel.GetComponent<ShootingTutorial>().weapon.GetComponent<Animator>().SetTrigger("WeaponTutOn");
     }
     public void EnemyTutorial(){
+        buttonClicked = true;
         TutAnim.SetTrigger("Button");
-        Invoke("waitForET",1f);
+        Invoke("waitForET",1.7f);
         Instantiate(clickSound,soundPosition,Quaternion.identity);
         Invoke("destroySound",0.3f);
     }
     void waitForET(){
         EnemyTutorialPanel.SetActive(true);
+        EnemyTutorialPanel.GetComponent<EnemyTutorial>().Start();
+        EnemyTutorialPanel.GetComponent<EnemyTutorial>().instEnemy();
+        EnemyTutorialPanel.GetComponent<Animator>().SetTrigger("ETIntro");
     }
     public void BackToMainMenu(){
+        buttonClicked = true;
+        TutAnim.SetTrigger("ReturnToMM");
         Instantiate(clickSound,soundPosition,Quaternion.identity);
         Invoke("destroySound",0.3f);
-        MainMenu.SetActive(true);
-        mm.Start();
+        Invoke("WaitMMScreen",0.67f);
     }
-    void destroySound(){
-        GameObject[] sounds = GameObject.FindGameObjectsWithTag("ClickSound");
-        for(int i = 0;i<sounds.Length;i++){
-            Destroy(sounds[i]);
-        }
+    void WaitMMScreen(){ 
+        MainMenu.SetActive(true);
+        MainMenu.GetComponent<MainMenu>().Start();
+    }
+    public override void destroySound(){
+        base.destroySound();
+    }
+    public override void FixedUpdate(){
+        base.FixedUpdate();
     }
 }

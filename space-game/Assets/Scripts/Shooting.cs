@@ -14,7 +14,7 @@ public class Shooting : MonoBehaviour
     public WeaponMovement movement;
     public float bulletForce = 20f;
     public int ammoCount = 4;
-    int index = 0;
+    public int index = 0;
     AudioSource shooting_audio;
     void Start(){
         ammo = GameObject.FindGameObjectsWithTag("Ammo");
@@ -38,7 +38,7 @@ public class Shooting : MonoBehaviour
             if(EventSystem.current.currentSelectedGameObject == null || EventSystem.current.currentSelectedGameObject.tag != "SoundButton"){
                 PlaySound();
                 Shoot();
-                Destroy(ammo[index]);
+                ammo[index].SetActive(false);
                 index ++;
                 ammoCount --;
             }
