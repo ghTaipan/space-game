@@ -3034,6 +3034,7 @@ MonoBehaviour:
   enemy3: {fileID: 0}
   enemyWeapon: {fileID: 3949200302317267722, guid: ec8b8e9e9514b5744b1769aa8551365d, type: 3}
   LoadScene: {fileID: 1815496100}
+  ESCPanel: {fileID: 232651690}
   lose: 0
   mod: 0
 --- !u!4 &853479225

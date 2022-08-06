@@ -55,7 +55,7 @@ public class EscPanel : UIParrent
         }
         shootingScript.enabled = true;
         GameIsPaused = false;
-        Invoke("waitForResume",0.5834f);
+        Invoke("waitForResume",0.54f);
     }
     public void ResumeUI(){
         Invoke("activateMovement",0.3f);
@@ -78,7 +78,7 @@ public class EscPanel : UIParrent
         
         shootingScript.enabled = true;
         GameIsPaused = false;
-        Invoke("waitForResume",0.5834f);
+        Invoke("waitForResume",0.54f);
     }
     void activateMovement(){
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");

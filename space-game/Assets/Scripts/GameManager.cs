@@ -15,10 +15,11 @@ public class GameManager : MonoBehaviour
     public GameObject enemy3;
     public GameObject enemyWeapon;
     public GameObject LoadScene;
+    public GameObject ESCPanel;
     public bool lose = false;
     public int mod = 0;
     public void Start(){
-        FindObjectOfType<EscPanel>().GetComponent<EscPanel>().enabled = false;
+        ESCPanel.GetComponent<EscPanel>().enabled = false;
         Invoke("waitLoadScreen",1.5f);
         int index = FindObjectOfType<DoNotDestory>().levelNumber ;
         mod = index % 4;

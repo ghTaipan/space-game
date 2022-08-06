@@ -45,11 +45,11 @@ public class EnemyTutorial : UIParrent
         }
         else if(waitedTimes == 1){
             enemy1 = Instantiate(Resources.Load("Enemy3")) as GameObject;
-            enemy1.transform.position = new Vector3 (0,3.5f,0);
+            enemy1.transform.position = new Vector3 (0,4.6f,0);
         }
         else if (waitedTimes == 2){
             enemy1 = Instantiate(Resources.Load("Enemy4")) as GameObject;
-            enemy1.transform.position = new Vector3 (0,3.5f,0);
+            enemy1.transform.position = new Vector3 (0,4.6f,0);
         }
         else if (waitedTimes == 4 ){
             enemy1 = Instantiate(Resources.Load("Enemy2")) as GameObject;
