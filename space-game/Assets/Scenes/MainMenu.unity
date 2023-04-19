@@ -425,7 +425,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &64153875
 Animator:
   serializedVersion: 4
@@ -4716,7 +4716,7 @@ RectTransform:
   m_GameObject: {fileID: 548327608}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 1.52, y: 1.55, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 683220202}
@@ -4724,7 +4724,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -202.23, y: 170}
+  m_AnchoredPosition: {x: -202.23, y: 185}
   m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &548327610
@@ -4747,7 +4747,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SPACE BULLET
+  m_text: Galactic Math Enforcer
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e3b2f1558161f874d9b4b0e1de283bf0, type: 2}
   m_sharedMaterial: {fileID: -7550631688951378436, guid: e3b2f1558161f874d9b4b0e1de283bf0, type: 2}
@@ -4786,7 +4786,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 5
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -6316,7 +6316,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Audio
+  m_text: Settings
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c8fc66d4b26ce849b696b4e6cf66521, type: 2}
   m_sharedMaterial: {fileID: -3904268500477948361, guid: 7c8fc66d4b26ce849b696b4e6cf66521, type: 2}
