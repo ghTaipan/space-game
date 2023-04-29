@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy4 : Enemy2
 {
-    void Start(){
+    private void Start(){
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         movement.y = -1.5f;
         movement.x = -1.8f;
@@ -13,14 +13,14 @@ public class Enemy4 : Enemy2
         movement3 = movement;
         rb.velocity = movement;
     }
-    public override void FixedUpdate(){
+    protected override void FixedUpdate(){
         base.FixedUpdate();
     }
-     public override void Die()
+    public override void Die()
     {
         base.Die();
     }
-    public override void OnCollisionEnter2D(Collision2D collisionInfo)
+    protected override void OnCollisionEnter2D(Collision2D collisionInfo)
     {
         base.OnCollisionEnter2D(collisionInfo);
     }

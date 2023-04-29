@@ -6,14 +6,14 @@ public class Music : MonoBehaviour
 {
     public GameObject SoundOff;
     public GameObject SoundOn;
-    void Start(){
+    private void Start(){
         FindObjectOfType<DoNotDestory>().SoundOff = SoundOff;
         FindObjectOfType<DoNotDestory>().SoundOn = SoundOn;
     }
-    public void MusicOff(){
+    private void MusicOff(){
         FindObjectOfType<DoNotDestory>().MusicOff();
     }
-    public void MusicOn(){
+    private void MusicOn(){
         FindObjectOfType<DoNotDestory>().MusicOn();
     }
 }

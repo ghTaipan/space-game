@@ -11,10 +11,10 @@ public class AudioData
     public bool muted;
 
  public AudioData(VolumeSettings AudioSettings){
-    MusicVolume = AudioSettings.musicVolume;
-    ClickVolume = AudioSettings.clickVolume;
-    ShootVolume = AudioSettings.shootVolume;
-    DeathVolume = AudioSettings.deathVolume;
-    muted = AudioSettings.muted;
+    MusicVolume = AudioSettings.MusicVolume;
+    ClickVolume = AudioSettings.ClickVolume;
+    ShootVolume = AudioSettings.ShootVolume;
+    DeathVolume = AudioSettings.DeathVolume;
+    muted = AudioSettings.Muted;
     }   
 }

@@ -34,7 +34,7 @@ public class MainMenu : UIParrent
         soundPosition.y = 0;
         soundPosition.z = 0;
     }
-    void playAnimMM(){
+    private void playAnimMM(){
         if(SaveSystem.LoadLevel() == 0){
             MManim.SetTrigger("MainMenuOn");
         }
@@ -51,8 +51,8 @@ public class MainMenu : UIParrent
         fadeOut.GetComponent<Animator>().SetTrigger("NewGame");
         Invoke("waitNewGame",2f);
     }
-    void waitNewGame(){
-        FindObjectOfType<DoNotDestory>().levelNumber = 0;
+    private void waitNewGame(){
+        FindObjectOfType<DoNotDestory>().LevelNumber = 0;
         SaveSystem.SaveLevel(1);
         SceneManager.LoadScene(1);
     }
@@ -65,8 +65,8 @@ public class MainMenu : UIParrent
         fadeOut.GetComponent<Animator>().SetTrigger("NewGame");
         Invoke("waitContinue",2f);
     }
-    void waitContinue(){
-        FindObjectOfType<DoNotDestory>().levelNumber = SaveSystem.LoadLevel()-1;
+    private void waitContinue(){
+        FindObjectOfType<DoNotDestory>().LevelNumber = SaveSystem.LoadLevel()-1;
         if(SaveSystem.LoadLevel() == 4 || SaveSystem.LoadLevel()  == 8 || SaveSystem.LoadLevel() == 12 || SaveSystem.LoadLevel() == 16  ){
             SceneManager.LoadScene((SaveSystem.LoadLevel()/4));
         }
@@ -88,7 +88,7 @@ public class MainMenu : UIParrent
         LTAnim();
         Invoke("WaitLevel",0.67f);
     }
-    void WaitLevel(){
+    private void WaitLevel(){
         LevelPanel.SetActive(true);
         LevelPanel.GetComponent<ChooseLevel>().Start();
         LevelPanel.GetComponent<ChooseLevel>().playAnim();
@@ -100,7 +100,7 @@ public class MainMenu : UIParrent
         LTAnim();
         Invoke("waitTutorial",0.67f);
     }
-    void LTAnim(){
+    private void LTAnim(){
         if(SaveSystem.LoadLevel() <= 0 ){
             MManim.SetTrigger("LTButtonOn2");
         }
@@ -108,7 +108,7 @@ public class MainMenu : UIParrent
              MManim.SetTrigger("LTButtonOn");
         }
     }
-    void waitTutorial(){
+    private void waitTutorial(){
         TutorialPanel.SetActive(true); 
         TutorialPanel.GetComponent<Tutorial>().Start();
         TutorialPanel.GetComponent<Tutorial>().playAnim();
@@ -126,16 +126,16 @@ public class MainMenu : UIParrent
         AudioPanel.GetComponent<Animator>().SetTrigger("APOff");
         Invoke("waitAudioOff",0.5f);
     }
-    void waitAudioOff(){
+    private void waitAudioOff(){
          AudioPanel.SetActive(false);
     }
     void destroyFade(){
         Destroy(fadeIn);
     }
-    public override void destroySound(){
+    protected override void destroySound(){
         base.destroySound();
     }
-    public override void FixedUpdate(){
+    protected override void FixedUpdate(){
         base.FixedUpdate();
     }
 }

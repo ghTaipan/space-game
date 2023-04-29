@@ -15,38 +15,37 @@ public class LevelComplete : MonoBehaviour
   public GameObject ammo2;
   public GameObject ammo3;
   public GameObject ammo4;
-  public Animator laser;
-  public bool LCStarted = false;
-  public bool startDebug = false;
+  private bool lCStarted = false;
+  private bool startDebug = false;
   public void Start(){
     LCStarted = true;
     startDebug = true;
-    EscapeMenu.GetComponent<EscPanel>().activate = false;
-    lasers = GameObject.FindGameObjectsWithTag("Laser");
     plasmaBalls = GameObject.FindGameObjectsWithTag("PlasmaBall");
     wp.GetComponent<WeaponMovement>().Exit();
     Invoke("playerExit",1f);
     Invoke("wait",2.17f);
   }
-  void playerExit(){
-    laser.SetTrigger("LaserOff");
+  private void playerExit(){
+    FindObjectOfType<EscPanel>().EPAnim.SetTrigger("EndLvl");
     player.GetComponent<Player>().Exit();
   }
-  void wait(){
+  private void wait(){
     //int sceeneIndex = SceneManager.GetActiveScene().buildIndex;
-    if(FindObjectOfType<DoNotDestory>().levelNumber != 16){
-        FindObjectOfType<DoNotDestory>().levelNumber++;
+    if(FindObjectOfType<DoNotDestory>().LevelNumber != 16){
+        FindObjectOfType<DoNotDestory>().LevelNumber++;
     }
-    int sceeneIndex = FindObjectOfType<DoNotDestory>().levelNumber;
+    int sceeneIndex = FindObjectOfType<DoNotDestory>().LevelNumber;
     if(SaveSystem.LoadLevel() <= sceeneIndex && sceeneIndex != 16){
       SaveSystem.SaveLevel(sceeneIndex + 1);
     }
     if(sceeneIndex ==4 || sceeneIndex == 8 || sceeneIndex == 12){
-      EscapeMenu.GetComponent<EscPanel>().activate = true;
-      FindObjectOfType<DoNotDestory>().nextMusic = false;
+      EscapeMenu.GetComponent<EscPanel>().Activate = true;
+      FindObjectOfType<DoNotDestory>().NextMusic = false;
       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     else{
+      SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+      /*
       EscapeMenu.SetActive(false);
       ammo1.SetActive(false);
       ammo2.SetActive(false);
@@ -70,7 +69,17 @@ public class LevelComplete : MonoBehaviour
       FindObjectOfType<Shooting>().ammoCount = 4;
       LCStarted = false;
       gameObject.SetActive(false);  
+      */
     }
   }
-
+  public bool LCStarted
+      {
+          get {return lCStarted; }
+          set { lCStarted = value;}
+      }
+  public bool StartDebug
+      {
+          get {return startDebug; }
+          set { startDebug = value;}
+      }
 }

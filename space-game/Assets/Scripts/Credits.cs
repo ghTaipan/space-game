@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Credits : UIParrent
 {
-    public int switchToMenu = 0;
+    private int switchToMenu = 0;
     public GameObject fade;
     public GameObject clickSound;
 
@@ -21,13 +21,18 @@ public class Credits : UIParrent
         fade.SetActive(true);
         Invoke("waitForMenu",0.6f);
     }
-    void waitForMenu(){
+    private void waitForMenu(){
         SceneManager.LoadScene(0);
     }
-    public override void destroySound(){
+    protected override void destroySound(){
         base.destroySound();
     }
-    public override void FixedUpdate(){
+    protected override void FixedUpdate(){
         base.FixedUpdate();
     }
+    public int SwitchToMenu
+      {
+          get {return switchToMenu; }
+          set { switchToMenu = value;}
+      }
 }

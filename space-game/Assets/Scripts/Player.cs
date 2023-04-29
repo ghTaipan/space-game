@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : ShipParrent
 {
     private Animator playerAnimator;
-    void Start(){
+    private void Start(){
         playerAnimator = GetComponent<Animator>();
         playerAnimator.SetTrigger("TriEnter");
     }
@@ -17,7 +17,7 @@ public class Player : ShipParrent
         base.Die();
         Destroy(FindObjectOfType<WeaponMovement>().gameObject);
     }
-    public override void OnCollisionEnter2D(Collision2D collisionInfo ){
+    protected override void OnCollisionEnter2D(Collision2D collisionInfo ){
         if(collisionInfo.collider.tag == "Enemy"){
             Die();
             FindObjectOfType<GameManager>().LevelFailed();

@@ -11,7 +11,7 @@ public class ChooseLevel : UIParrent
     public GameObject fadeOut;
     public GameObject clickSound;
     private Animator levelAnim;
-    string buttonName;
+    private string buttonName;
     public void Start(){
         buttonClicked = false;
         levelAnim = GetComponent<Animator>();
@@ -27,7 +27,7 @@ public class ChooseLevel : UIParrent
     public void playAnim(){
         levelAnim.SetTrigger("LevelPanelOn");
     }
-    void SortArray(){
+    private void SortArray(){
         GameObject temp;
         for(int i = 0 ; i< levelButtons.Length-1; i++){
             if(string.Compare(levelButtons[i].name,levelButtons[i+1].name) > 0 ){
@@ -38,7 +38,7 @@ public class ChooseLevel : UIParrent
             }
         }
     }
-    void deactivateButtons(){
+    private void deactivateButtons(){
         for(int i = 0 ; i<levelButtons.Length;i++){
             levelButtons[i].SetActive(false);
         }
@@ -52,15 +52,15 @@ public class ChooseLevel : UIParrent
         Invoke("destroySound",0.3f);
         Invoke("waitActivateScene",0.7f);
     }
-    void waitActivateScene(){
+    private void waitActivateScene(){
         for(int i = 0 ; i<levelButtons.Length;i++){
             if(levelButtons[i].name.Equals(buttonName)){
-                FindObjectOfType<DoNotDestory>().levelNumber = i;
+                FindObjectOfType<DoNotDestory>().LevelNumber = i;
                 SceneManager.LoadScene((i/4)+1);
             }
         }
     }
-    void activateLevel(){
+    private void activateLevel(){
         int Highestlevel = SaveSystem.LoadLevel();
         if(Highestlevel == 0){
             Highestlevel = 1;
@@ -77,14 +77,14 @@ public class ChooseLevel : UIParrent
         Invoke("destroySound",0.3f);
         Invoke("waitMM",0.7f);
     }
-    void waitMM(){
+    private void waitMM(){
         MainMenu.SetActive(true);
         MainMenu.GetComponent<MainMenu>().Start();
     }
-    public override void destroySound(){
+    protected override void destroySound(){
         base.destroySound();
     }
-    public override void FixedUpdate(){
+    protected override void FixedUpdate(){
         base.FixedUpdate();
     }
 }

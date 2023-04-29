@@ -11,11 +11,11 @@ public class DoNotDestory : MonoBehaviour
     public AudioClip music3;
     public AudioClip music4;
     public AudioClip music5;
-    public GameObject SoundOff;
-    public GameObject SoundOn;
-    public bool nextMusic = false;
-    bool muted;
-    public int levelNumber = 0;
+    private GameObject soundOff;
+    private GameObject soundOn;
+    private bool nextMusic = false;
+    private bool muted;
+    private int levelNumber = 0;
     Animator musicAnim;
     [SerializeField] AudioMixer mixer;
     float musicVolume;
@@ -37,7 +37,7 @@ public class DoNotDestory : MonoBehaviour
         }
         LoadVolume();
     }
-    void LoadVolume(){
+    private void LoadVolume(){
         musicVolume = SaveSystem.LoadAudio().MusicVolume;
         shootVolume = SaveSystem.LoadAudio().ShootVolume;
         clickVolume = SaveSystem.LoadAudio().ClickVolume;
@@ -55,17 +55,17 @@ public class DoNotDestory : MonoBehaviour
     }
       
     void FixedUpdate(){
-        if(SoundOn != null && SoundOff != null){
+        if(soundOn != null && soundOff != null){
             if(muted){
-                SoundOn.SetActive(true);
-                SoundOff.SetActive(false);
+                soundOn.SetActive(true);
+                soundOff.SetActive(false);
             }
             else{
-                SoundOn.SetActive(false);
-                SoundOff.SetActive(true);
+                soundOn.SetActive(false);
+                soundOff.SetActive(true);
             }
         }
-        int index = FindObjectOfType<DoNotDestory>().levelNumber;
+        int index = FindObjectOfType<DoNotDestory>().LevelNumber;
         if(index >= 0 && index <4 && nextMusic == false && SceneManager.GetActiveScene().buildIndex != 0){
             musicAnim.SetTrigger("Switch");
             AudioSource gameMusic = gameObject.GetComponent<AudioSource>();
@@ -99,7 +99,7 @@ public class DoNotDestory : MonoBehaviour
                 gameMusic.Play();
             }
         }
-        else if (FindObjectOfType<Credits>() != null && FindObjectOfType<Credits>().switchToMenu == 1){
+        else if (FindObjectOfType<Credits>() != null && FindObjectOfType<Credits>().SwitchToMenu == 1){
             Destroy(gameObject);
         }
     }
@@ -112,5 +112,25 @@ public class DoNotDestory : MonoBehaviour
         FindObjectOfType<VolumeSettings>().setMuted(false);
         muted = SaveSystem.LoadAudio().muted;
         gameObject.GetComponent<AudioSource>().Play();
+    }
+    public GameObject SoundOn
+    {
+        get {return soundOn; }
+        set { soundOn = value;}
+    }
+   public GameObject SoundOff
+    {
+        get {return soundOff; }
+        set { soundOff = value;}
+    }
+    public int LevelNumber
+    {
+        get {return levelNumber; }
+        set { levelNumber = value;}
+    }
+    public bool NextMusic
+    {
+        get {return nextMusic; }
+        set { nextMusic = value;}
     }
 }

@@ -4,16 +4,16 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 public class TutorialShooting : MonoBehaviour
 {
-     public Transform firePoint;
+    public Transform firePoint;
     public GameObject bulletPreFab;
-    public WeaponMovement movement;
-    public float bulletForce = 20f;
+    private WeaponMovement movement;
+    private float bulletForce = 20f;
     AudioSource shooting_audio;
 
-    void Start(){
+    private void Start(){
         shooting_audio = GetComponent<AudioSource>();
     }
-    void Update()
+    private void Update()
     {
         if(Input.GetButtonDown("Fire1") ){
             if(EventSystem.current.currentSelectedGameObject == null || (EventSystem.current.currentSelectedGameObject.tag != "Button")){
@@ -22,7 +22,7 @@ public class TutorialShooting : MonoBehaviour
             }
         }
     }
-        void PlaySound(){
+    private void PlaySound(){
         if(shooting_audio.isPlaying){
             shooting_audio.Stop();
             shooting_audio.Play();
@@ -31,7 +31,7 @@ public class TutorialShooting : MonoBehaviour
             shooting_audio.Play();
         }
     }
-    void Shoot(){
+    private void Shoot(){
         GameObject bullet = Instantiate(bulletPreFab,firePoint.position,firePoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         firePoint.Rotate(0,0,90f);

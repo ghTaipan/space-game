@@ -11,17 +11,17 @@ public class VolumeSettings : MonoBehaviour
     [SerializeField] Slider clickSfxSlider;
     [SerializeField] Slider shootSfxSlider;
     [SerializeField] Slider deathSfxSlider;
-    public float musicVolume;
-    public float clickVolume;
-    public float shootVolume;
-    public float deathVolume;
-    public bool muted;
+    private float musicVolume;
+    private float clickVolume;
+    private float shootVolume;
+    private float deathVolume;
+    private bool muted;
     public const string MIXER_MUSIC =  "MusicVolume";
     public const string MIXER_SHOOT =  "ShootVolume";
     public const string MIXER_CLICK =  "ClickVolume";
     public const string MIXER_DEATH =  "DeathVolume";
-    bool started = true;
-    public bool saveable = false;
+    private bool started = true;
+    private bool saveable = false;
     private void Awake(){
          if(SaveSystem.LoadAudio() == null){
             musicVolume = 1f;
@@ -38,7 +38,7 @@ public class VolumeSettings : MonoBehaviour
             deathSfxSlider.onValueChanged.AddListener(setDeathVolume);
         }
     }
-    void startValue(){
+    private void startValue(){
         musicSlider.value = SaveSystem.LoadAudio().MusicVolume;
         shootSfxSlider.value = SaveSystem.LoadAudio().ShootVolume;
         clickSfxSlider.value = SaveSystem.LoadAudio().ClickVolume;
@@ -49,7 +49,7 @@ public class VolumeSettings : MonoBehaviour
         mixer.SetFloat(MIXER_CLICK,Mathf.Log10(clickSfxSlider.value) * 20);
         mixer.SetFloat(MIXER_DEATH,Mathf.Log10(deathSfxSlider.value) * 20);
     }
-    void SetMusicVolume(float value){
+    private void SetMusicVolume(float value){
         started = false;
         musicVolume = value;
         shootVolume = SaveSystem.LoadAudio().ShootVolume;
@@ -59,7 +59,7 @@ public class VolumeSettings : MonoBehaviour
         SaveSystem.SaveAudio(this);
         mixer.SetFloat(MIXER_MUSIC,Mathf.Log10(value) * 20);   
     }
-    void SetShootVolume(float value){
+    private void SetShootVolume(float value){
         started = false;
         shootVolume = value;
         musicVolume = SaveSystem.LoadAudio().MusicVolume;
@@ -69,7 +69,7 @@ public class VolumeSettings : MonoBehaviour
         SaveSystem.SaveAudio(this);
         mixer.SetFloat(MIXER_SHOOT,Mathf.Log10(value) * 20);
     }
-    void SetClickVolume(float value){
+    private void SetClickVolume(float value){
         started = false;
         clickVolume = value;
         shootVolume = SaveSystem.LoadAudio().ShootVolume;
@@ -79,7 +79,7 @@ public class VolumeSettings : MonoBehaviour
         SaveSystem.SaveAudio(this);
         mixer.SetFloat(MIXER_CLICK,Mathf.Log10(value) * 20);
     }
-    void setDeathVolume(float value){
+    private void setDeathVolume(float value){
         started = false;
         deathVolume = value;
         shootVolume = SaveSystem.LoadAudio().ShootVolume;
@@ -97,12 +97,37 @@ public class VolumeSettings : MonoBehaviour
         muted = mutedX;
         SaveSystem.SaveAudio(this);
     }
-    void FixedUpdate(){
+    private void FixedUpdate(){
         if(SaveSystem.LoadAudio() != null){
             saveable = true;
         }
         if(started && saveable){
             startValue();
         }
+    }
+    public float MusicVolume
+    {
+        get {return musicVolume; }
+        set {musicVolume = value; }
+    }
+    public float ClickVolume
+    {
+        get {return clickVolume; }
+        set {clickVolume = value; }
+    }
+    public float ShootVolume
+    {
+        get {return shootVolume; }
+        set {shootVolume = value; }
+    }
+    public float DeathVolume
+    {
+        get {return deathVolume; }
+        set {deathVolume = value; }
+    }
+    public bool Muted
+    {
+        get {return muted; }
+        set {muted = value; }
     }
 }

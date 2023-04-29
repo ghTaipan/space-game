@@ -8,20 +8,31 @@ public class GameManager : MonoBehaviour
 {   
     public GameObject completeLevelUI;
     public GameObject failLevelUI;
+    public GameObject mathSystem;
     public GameObject[] enemyCount;
     public GameObject player;
+    public GameObject weapon;
+    public GameObject ammunition;
     public GameObject enemy1;
     public GameObject enemy2;
     public GameObject enemy3;
     public GameObject enemyWeapon;
     public GameObject LoadScene;
     public GameObject ESCPanel;
-    public bool lose = false;
-    public int mod = 0;
+    private bool lose = false;
+    private bool gameStarted = false;
+    private int mod = 0;
     public void Start(){
-        ESCPanel.GetComponent<EscPanel>().enabled = false;
-        Invoke("waitLoadScreen",1.5f);
-        int index = FindObjectOfType<DoNotDestory>().levelNumber ;
+        mathSystem.SetActive(true);
+    }
+    public void StartGame(){
+        ESCPanel.SetActive(true);
+        player.SetActive(true);
+        weapon.SetActive(true);
+        ammunition.SetActive(true);
+        gameStarted = true;
+        //prepareLevel();
+        int index = FindObjectOfType<DoNotDestory>().LevelNumber;
         mod = index % 4;
         if(index/4 == 0){
             if(mod == 0){
@@ -151,29 +162,35 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(5);
         }
     }
-    void waitLoadScreen(){
-        LoadScene.SetActive(false);
-        FindObjectOfType<EscPanel>().GetComponent<EscPanel>().enabled = true;
+    private void prepareLevel(){
+        player.GetComponent<Animator>().SetTrigger("TriEnter");
+        weapon.GetComponent<Animator>().SetTrigger("TriOn");
+        weapon.GetComponent<WeaponMovement>().enabled = true;
+        weapon.GetComponent<WeaponMovement>().Waited = false;
+        weapon.GetComponent<Rigidbody2D>().rotation = 0;
+        weapon.GetComponent<WeaponMovement>().Start();
+        FindObjectOfType<Shooting>().Index = 0;
+        FindObjectOfType<Shooting>().AmmoCount = 4;
     }
-    public void LevelCompleted(){
+    private void LevelCompleted(){
         if(player.gameObject != null && !completeLevelUI.GetComponent<LevelComplete>().LCStarted){
             completeLevelUI.SetActive(true);
-            if(completeLevelUI.GetComponent<LevelComplete>().startDebug){
+            if(completeLevelUI.GetComponent<LevelComplete>().StartDebug){
                 completeLevelUI.GetComponent<LevelComplete>().Start();
             }
         }
     }
-     void FixedUpdate(){
+    private void FixedUpdate(){
         enemyCount = GameObject.FindGameObjectsWithTag("Enemy");
-       if(enemyCount.Length == 0){
+       if(enemyCount.Length == 0 && gameStarted){
             LevelCompleted();
         }
     }
-    public void LevelFailed(){
+    public  void LevelFailed(){
         FindObjectOfType<EscPanel>().enabled = false;
         Invoke("WaitForLevelFailed",0.7f);
     }
-     void WaitForLevelFailed(){
+    private void WaitForLevelFailed(){
         if(enemyCount.Length != 0){
             if( player != null){
                 KillPlayer();
@@ -183,7 +200,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    public void KillPlayer(){
+    private  void KillPlayer(){
         lose = true;
         if(enemy1 != null){
               Destroy(enemy1.GetComponent<Rigidbody2D>());
@@ -214,4 +231,14 @@ public class GameManager : MonoBehaviour
             Instantiate(enemyWeapon,weaponTr, weaponRt);
         }
     }
+    public bool Lose
+      {
+          get {return lose; }
+          set { lose = value;}
+      }
+    public int Mod
+      {
+          get {return mod; }
+          set { mod = value;}
+      }
 }

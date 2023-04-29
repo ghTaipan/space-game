@@ -14,7 +14,7 @@ public class Enemy3 : Enemy
     {
         base.Die();
     }
-    public override void OnCollisionEnter2D(Collision2D collisionInfo)
+    protected override void OnCollisionEnter2D(Collision2D collisionInfo)
     {
         base.OnCollisionEnter2D(collisionInfo);
     }

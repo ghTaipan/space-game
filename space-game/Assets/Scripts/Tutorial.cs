@@ -29,7 +29,7 @@ public class Tutorial : UIParrent
         Instantiate(clickSound,soundPosition,Quaternion.identity);
         Invoke("destroySound",0.3f);
     }
-    void waitForST(){
+    private void waitForST(){
         ShootingTutorialPanel.SetActive(true);
         ShootingTutorialPanel.GetComponent<ShootingTutorial>().Start();
         ShootingTutorialPanel.GetComponent<ShootingTutorial>().WeaponMethods();
@@ -43,7 +43,7 @@ public class Tutorial : UIParrent
         Instantiate(clickSound,soundPosition,Quaternion.identity);
         Invoke("destroySound",0.3f);
     }
-    void waitForET(){
+    private void waitForET(){
         EnemyTutorialPanel.SetActive(true);
         EnemyTutorialPanel.GetComponent<EnemyTutorial>().Start();
         EnemyTutorialPanel.GetComponent<EnemyTutorial>().instEnemy();
@@ -56,14 +56,14 @@ public class Tutorial : UIParrent
         Invoke("destroySound",0.3f);
         Invoke("WaitMMScreen",0.67f);
     }
-    void WaitMMScreen(){ 
+    private void WaitMMScreen(){ 
         MainMenu.SetActive(true);
         MainMenu.GetComponent<MainMenu>().Start();
     }
-    public override void destroySound(){
+    protected override void destroySound(){
         base.destroySound();
     }
-    public override void FixedUpdate(){
+    protected override void FixedUpdate(){
         base.FixedUpdate();
     }
 }

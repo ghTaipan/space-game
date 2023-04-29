@@ -594,7 +594,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundPosition: {x: 0, y: 0, z: 0}
-  buttonClicked: 0
   clickSound: {fileID: 7845263321880281547, guid: 8e3faac86c07a69409e8ab5e9d9ec063, type: 3}
 --- !u!95 &111939051
 Animator:
@@ -1186,16 +1185,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundPosition: {x: 0, y: 0, z: 0}
-  buttonClicked: 0
   clickSound: {fileID: 7845263321880281547, guid: 8e3faac86c07a69409e8ab5e9d9ec063, type: 3}
   PauseMenuUI: {fileID: 986659301}
   SoundOn: {fileID: 1291869305}
   SoundOff: {fileID: 404647794}
   shootingScript: {fileID: 826484493}
-  activate: 0
-  movement: {x: 0, y: 0}
-  movement2: {x: 0, y: 0}
-  movement3: {x: 0, y: 0}
 --- !u!95 &232651696
 Animator:
   serializedVersion: 4
@@ -2858,12 +2852,6 @@ MonoBehaviour:
   clickSfxSlider: {fileID: 1747394303}
   shootSfxSlider: {fileID: 1155015800}
   deathSfxSlider: {fileID: 1777408250}
-  musicVolume: 0
-  clickVolume: 0
-  shootVolume: 0
-  deathVolume: 0
-  muted: 0
-  saveable: 0
 --- !u!4 &709539658
 Transform:
   m_ObjectHideFlags: 0
@@ -3111,16 +3099,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   completeLevelUI: {fileID: 1739798526}
   failLevelUI: {fileID: 111939046}
+  mathSystem: {fileID: 0}
   enemyCount: []
   player: {fileID: 1742944152}
+  weapon: {fileID: 0}
+  ammunition: {fileID: 0}
   enemy1: {fileID: 0}
   enemy2: {fileID: 0}
   enemy3: {fileID: 0}
   enemyWeapon: {fileID: 3949200302317267722, guid: ec8b8e9e9514b5744b1769aa8551365d, type: 3}
   LoadScene: {fileID: 1815496100}
   ESCPanel: {fileID: 232651690}
-  lose: 0
-  mod: 0
 --- !u!4 &853479225
 Transform:
   m_ObjectHideFlags: 0
@@ -4988,9 +4977,6 @@ MonoBehaviour:
   ammo2: {fileID: 939223348}
   ammo3: {fileID: 784248612}
   ammo4: {fileID: 2033247032}
-  laser: {fileID: 376528559}
-  LCStarted: 0
-  startDebug: 0
 --- !u!95 &1739798532
 Animator:
   serializedVersion: 4
@@ -5399,7 +5385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6558,10 +6544,6 @@ MonoBehaviour:
   music3: {fileID: 8300000, guid: c1bb757d4715a3143b25a1e3dbbb5822, type: 3}
   music4: {fileID: 8300000, guid: 4e81d8c7f9817ac4896961ab5f24b14f, type: 3}
   music5: {fileID: 8300000, guid: 8b373c59756de2b4b8e9fbe515fc1708, type: 3}
-  SoundOff: {fileID: 404647794}
-  SoundOn: {fileID: 1291869305}
-  nextMusic: 0
-  levelNumber: 0
   mixer: {fileID: 24100000, guid: ee60781596b429347a9a8206a6e8ca79, type: 2}
 --- !u!82 &1952267595
 AudioSource:

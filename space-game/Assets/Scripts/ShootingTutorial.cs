@@ -14,10 +14,10 @@ public class ShootingTutorial : UIParrent
     public GameObject next3;
     public GameObject enemy1;
     public GameObject[] bullets;
-    bool KillTutOn = false;
-    bool ReviveEnemy = true;
-    bool BackToTutScreen;
-    bool DestroyBulletNow = true;
+    private bool KillTutOn = false;
+    private bool ReviveEnemy = true;
+    private bool BackToTutScreen;
+    private bool DestroyBulletNow = true;
     private Animator ShootTutAnim;
   
     public void Start(){
@@ -38,7 +38,7 @@ public class ShootingTutorial : UIParrent
         weapon.GetComponent<Shooting>().enabled = false;
         weapon.GetComponent<TutorialShooting>().enabled = false;
     }
-    public void WeaponMovementTut(){
+    private void WeaponMovementTut(){
         weapon.GetComponent<Animator>().enabled = false;
         weapon.GetComponent<WeaponMovement>().enabled = true;
         ShootTutAnim.SetTrigger("WPTutOn");
@@ -63,7 +63,7 @@ public class ShootingTutorial : UIParrent
         next3.SetActive(false);
         KillTutOn = true;
     }
-    public void BackToTutorialScreen(){
+    private void BackToTutorialScreen(){
         BackToTutScreen = true;
         weapon.GetComponent<Animator>().enabled = true;
         Destroy(enemy1);
@@ -74,16 +74,16 @@ public class ShootingTutorial : UIParrent
         Invoke("destroySound",0.3f);
         Invoke("WaitTTScreen",0.7f);
     }
-    void WaitTTScreen(){
+    private void WaitTTScreen(){
         Destroy(weapon);
         TutorialPanel.SetActive(true);
         TutorialPanel.GetComponent<Tutorial>().Start();
         TutorialPanel.GetComponent<Animator>().SetTrigger("Return");
     }
-    public override void destroySound(){
+    protected override void destroySound(){
         base.destroySound();
     }
-    public override void FixedUpdate(){
+    protected override void FixedUpdate(){
         if(DestroyBulletNow){
             DestroyBulletNow = false;
             Invoke("DestroyBullet",5f);
@@ -94,25 +94,25 @@ public class ShootingTutorial : UIParrent
         }
         base.FixedUpdate();
     }
-    void DestroyBullet(){
+    private void DestroyBullet(){
         bullets = GameObject.FindGameObjectsWithTag("Bullet");
         foreach(GameObject gameObject in bullets){
             Destroy(gameObject);
         }
         DestroyBulletNow = true;
     }
-    void boolRevive(){
+    private void boolRevive(){
         if(!BackToTutScreen){
             ReviveEnemy = true;
         }
     }
-    void reviveEnemy(){
+    private void reviveEnemy(){
         DestroyDeathSound();
         enemy1 = Instantiate(Resources.Load("Enemy1")) as GameObject;
         enemy1.transform.position = new Vector3 (0,4f,0);
         Invoke("boolRevive",0.1f);
     }
-    void DestroyDeathSound(){
+    private void DestroyDeathSound(){
         GameObject[] sounds = GameObject.FindGameObjectsWithTag("DeathSound");
         for(int i = 0;i<sounds.Length;i++){
             Destroy(sounds[i]);

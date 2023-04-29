@@ -6,7 +6,7 @@ public class Enemy2 : Enemy
     public Vector2 movement;
     public Vector2 movement2;
     public Vector2 movement3;
-    void Start(){ 
+    private void Start(){ 
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         movement.x = -1.5f;
         movement.y = 0;
@@ -21,8 +21,8 @@ public class Enemy2 : Enemy
         movement3 = movement;
         rb.velocity = movement;
     }
-    public virtual void FixedUpdate(){
-        if(!gameObject.GetComponent<Rigidbody2D>() && FindObjectOfType<GameManager>().lose == false){
+    protected virtual void FixedUpdate(){
+        if(!gameObject.GetComponent<Rigidbody2D>() && FindObjectOfType<GameManager>().Lose == false){
             gameObject.AddComponent<Rigidbody2D>();
             gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
             StartAfterPause(movement);
@@ -89,7 +89,7 @@ public class Enemy2 : Enemy
                 if(FindObjectOfType<GameManager>().enemy1 != null && FindObjectOfType<GameManager>().enemy2 == null){
                     Rigidbody2D rb1 = FindObjectOfType<GameManager>().enemy1.GetComponent(typeof (Rigidbody2D)) as Rigidbody2D;
                     Transform tr1 = FindObjectOfType<GameManager>().enemy1.GetComponent(typeof (Transform)) as Transform;
-                    if(FindObjectOfType<GameManager>().mod >= 1){
+                    if(FindObjectOfType<GameManager>().Mod >= 1){
                         if (tr1.position.x <= -2.5f || tr1.position.x >= 2.5f){
                             movement.x *= -1f;
                             rb1.velocity = movement;
@@ -109,7 +109,7 @@ public class Enemy2 : Enemy
     {
         base.Die();
     }
-    public override void OnCollisionEnter2D(Collision2D collisionInfo)
+    protected override void OnCollisionEnter2D(Collision2D collisionInfo)
     {
         base.OnCollisionEnter2D(collisionInfo);
     }

@@ -6,7 +6,7 @@ public class LevelFailed : UIParrent
 {
     private Animator LF;
     public GameObject clickSound;
-    void Start(){
+    private void Start(){
         buttonClicked = false;
         LF = GetComponent<Animator>();
         LF.SetTrigger("LFOn");
@@ -21,7 +21,7 @@ public class LevelFailed : UIParrent
         Invoke("destroySound",0.3f);
         Invoke("waitForRetry",0.84f);
     }
-    void waitForRetry(){
+    private void waitForRetry(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void MainMenu(){
@@ -32,13 +32,13 @@ public class LevelFailed : UIParrent
         Destroy(FindObjectOfType<DoNotDestory>().gameObject);
         Invoke("waitForMainMenu",0.84f);
     }
-    void waitForMainMenu(){
+    private void waitForMainMenu(){
         SceneManager.LoadScene(0);
     }
-    public override void destroySound(){
+    protected override void destroySound(){
         base.destroySound();
     }
-    public override void FixedUpdate(){
+    protected override void FixedUpdate(){
         base.FixedUpdate();
     }
 }

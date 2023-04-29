@@ -12,7 +12,7 @@ public class EnemyTutorial : UIParrent
     public GameObject enemy2;
     public GameObject enemy3;
     public GameObject[] enemies;
-    int waitedTimes;
+    private int waitedTimes;
     public void Start(){
         buttonClicked = false;
         waitedTimes = 0;
@@ -32,13 +32,13 @@ public class EnemyTutorial : UIParrent
         Invoke("killEnemy",14f);
         Invoke("killEnemy",20f);
     }
-    void killEnemy(){
+    private void killEnemy(){
         foreach(GameObject gameObject in enemies){
             gameObject.GetComponent<Enemy>().Die();
         }
         Invoke("wait",0.2f);
     }
-    void wait(){
+    private void wait(){
         if(waitedTimes == 0){
             enemy1 = Instantiate(Resources.Load("Enemy2")) as GameObject;
             enemy1.transform.position = new Vector3 (0,3.5f,0);
@@ -78,7 +78,7 @@ public class EnemyTutorial : UIParrent
         waitedTimes++;
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
     }
-    public void EnemyTut1(){
+    private void EnemyTut1(){
         enemy1 = Instantiate(Resources.Load("Enemy1")) as GameObject;
         enemy1.transform.position = new Vector3 (0,3.5f,0);
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -98,12 +98,12 @@ public class EnemyTutorial : UIParrent
         Invoke("destroySound",0.3f);
         Invoke("WaitTTScreen",0.84f);
     }
-    void WaitTTScreen(){ 
+    private void WaitTTScreen(){ 
         TutorialPanel.SetActive(true);
         TutorialPanel.GetComponent<Tutorial>().Start();
         TutorialPanel.GetComponent<Animator>().SetTrigger("Return");
     }
-    public override void destroySound(){
+    protected override void destroySound(){
         GameObject[] clickSounds = GameObject.FindGameObjectsWithTag("DeathSound");
         GameObject[] deathSounds = GameObject.FindGameObjectsWithTag("ClickSound");
         for(int i = 0;i<deathSounds.Length;i++){
@@ -113,7 +113,7 @@ public class EnemyTutorial : UIParrent
             Destroy(clickSounds[i]);
         }
     }
-    public override void FixedUpdate(){
+    protected override void FixedUpdate(){
         base.FixedUpdate();
     }
 }

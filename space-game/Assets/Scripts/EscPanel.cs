@@ -10,22 +10,23 @@ public class EscPanel : UIParrent
     public GameObject SoundOn;
     public GameObject SoundOff;
     public Shooting shootingScript;
-    public static bool GameIsPaused = false;
-    public static bool AnimationIsPlaying;
-    public bool activate = false;
-    public Vector2 movement;
-    public Vector2 movement2;
-    public Vector2 movement3;
-    public void Start(){
+    private static bool GameIsPaused = false;
+    private static bool AnimationIsPlaying;
+    private bool activate = false;
+    private Vector2 movement;
+    private Vector2 movement2;
+    private Vector2 movement3;
+    private void Start(){
         buttonClicked = false;
         AnimationIsPlaying = false;
         EP = GetComponent<Animator>();
+        EP.SetTrigger("LvlStart");
         soundPosition.x = 0;
         soundPosition.y = 0;
         soundPosition.z = 0;
-        Invoke("waitLoadScreen",1.5f);
+        Invoke("waitLoadScreen",1.3f);
     }
-    void Update(){
+    private void Update(){
         if(Input.GetKeyDown(KeyCode.Escape) && !AnimationIsPlaying && activate){
             if(GameIsPaused){
                 Resume();
@@ -35,10 +36,10 @@ public class EscPanel : UIParrent
             }
         }
     }
-    void waitLoadScreen(){
+    private void waitLoadScreen(){
         activate = true;
     }
-    void Resume(){
+    private void Resume(){
         Invoke("activateMovement",0.3f);
         AnimationIsPlaying = true;
         if(SceneManager.GetActiveScene().buildIndex == 1){
@@ -80,7 +81,7 @@ public class EscPanel : UIParrent
         GameIsPaused = false;
         Invoke("waitForResume",0.54f);
     }
-    void activateMovement(){
+    private void activateMovement(){
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach(GameObject gameObject in enemies){
             if(gameObject.GetComponent<Enemy2>() != null){
@@ -119,7 +120,7 @@ public class EscPanel : UIParrent
             FindObjectOfType<WeaponMovement>().enabled = true;
         }
     }
-    void waitForResume(){
+    private void waitForResume(){
         AnimationIsPlaying = false;
         PauseMenuUI.SetActive(false);
     }
@@ -173,7 +174,7 @@ public class EscPanel : UIParrent
         }
         Invoke("waitForPause",0.5834f);
     }
-    void waitForPause(){
+    private void waitForPause(){
         AnimationIsPlaying = false;
     }
     public void Retry(){
@@ -183,16 +184,16 @@ public class EscPanel : UIParrent
         Invoke("destroySound",0.3f);
         Invoke("waitForRetry",0.67f);
     }
-    void waitForRetry(){
+    private void waitForRetry(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-    public void AudioSettings(){
+    private void AudioSettings(){
         Instantiate(clickSound,soundPosition,Quaternion.identity);
         Invoke("destroySound",0.3f);
         EP.SetTrigger("PMAudioOn");
        
     }
-    public void AudioToPauseMenu(){
+    private void AudioToPauseMenu(){
         Instantiate(clickSound,soundPosition,Quaternion.identity);
         Invoke("destroySound",0.3f);
         EP.SetTrigger("PMAudioOff");
@@ -208,13 +209,23 @@ public class EscPanel : UIParrent
         SoundOn.SetActive(false);
         Invoke("waitForMainMenu",0.67f);
     }
-    void waitForMainMenu(){
+    private void waitForMainMenu(){
         SceneManager.LoadScene(0);
     }
-    public override void destroySound(){
+    protected override void destroySound(){
         base.destroySound();
     }
-    public override void FixedUpdate(){
+    protected override void FixedUpdate(){
         base.FixedUpdate();
+    }
+    public bool Activate
+      {
+          get {return activate; }
+          set { activate = value;}
+      }
+    public Animator EPAnim
+    {
+        get {return EP; }
+          set { EP = value;}
     }
 }
