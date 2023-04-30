@@ -199,6 +199,16 @@ public class GameManager : MonoBehaviour
         Invoke("WaitForLevelFailed",0.7f);
     }
     private void WaitForLevelFailed(){
+        lose = true;
+        if(enemy1 != null){
+            Destroy(enemy1.GetComponent<Enemy>().RB);
+        }
+        if(enemy2 != null){
+            Destroy(enemy2.GetComponent<Enemy>().RB);
+        }
+        if(enemy3 != null){
+            Destroy(enemy3.GetComponent<Enemy>().RB);
+        }
         if(enemyCount.Length != 0){
             if( player != null){
                 KillPlayer();
@@ -208,16 +218,9 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    private  void KillPlayer(){
+    private void KillPlayer(){
         lose = true;
-        if(enemy1 != null){
-              Destroy(enemy1.GetComponent<Rigidbody2D>());
-        }
-        if(enemy2 != null){
-              Destroy(enemy2.GetComponent<Rigidbody2D>());
-        }
         if(enemy3 != null){
-            Destroy(enemy3.GetComponent<Rigidbody2D>());
             Vector3 weaponTr = enemy3.GetComponent<Transform>().position;
             Quaternion weaponRt = enemy3.GetComponent<Transform>().rotation;
             weaponTr.y = weaponTr.y + 0.2f;

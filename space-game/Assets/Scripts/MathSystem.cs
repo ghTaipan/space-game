@@ -255,7 +255,7 @@ public class MathSystem : UIParrent
             question.text = "What is the result of " + a.ToString() + " * " + b.ToString() + " = ?";
         }
         else{
-            a = generateNPN(10,100);;
+            a = generateNPN(100,1000);;
             divisors.Clear();
             b = findRandomDivisor(a);
             question.text = "What is the result of " + a.ToString() + " / " + b.ToString() + " = ?";
@@ -282,7 +282,7 @@ public class MathSystem : UIParrent
             question.text = "What is the result of " + a.ToString() + " * " + b.ToString() + " = ?";
         }
         else{
-            a = generateNPN(100,1000);;
+            a = generateNPN(1000,10000);;
             divisors.Clear();
             b = findRandomDivisor(a);
             question.text = "What is the result of " + a.ToString() + " / " + b.ToString() + " = ?";
@@ -309,7 +309,7 @@ public class MathSystem : UIParrent
             question.text = "What is the result of " + a.ToString() + " * " + b.ToString() + " = ?";
         }
         else{
-            a = generateNPN(100,1000);
+            a = generateNPN(10000,100000);
             divisors.Clear();
             b = findRandomDivisor(a);
             question.text = "What is the result of " + a.ToString() + " / " + b.ToString() + " = ?";

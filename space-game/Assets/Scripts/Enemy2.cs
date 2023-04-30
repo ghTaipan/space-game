@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Enemy2 : Enemy
 {
-    public Vector2 movement;
-    public Vector2 movement2;
-    public Vector2 movement3;
+    protected Vector2 movement;
+    protected Vector2 movement2;
+    protected Vector2 movement3;
+    
     private void Start(){ 
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        RB = GetComponent<Rigidbody2D>();
         movement.x = -1.5f;
         movement.y = 0;
         movement2 = movement;
         movement3 = movement;
-        rb.velocity = movement;
+        RB.velocity = movement;
     }
     public virtual void StartAfterPause(Vector2 movement1){
-         Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
         movement = movement1;
         movement2 = movement;
         movement3 = movement;
@@ -113,4 +114,5 @@ public class Enemy2 : Enemy
     {
         base.OnCollisionEnter2D(collisionInfo);
     }
+    
 }

@@ -425,7 +425,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &64153875
 Animator:
   serializedVersion: 4
@@ -459,7 +459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1668,7 +1668,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundPosition: {x: 0, y: 0, z: 0}
-  buttonClicked: 0
   MainMenu: {fileID: 683220201}
   levelButtons: []
   fadeOut: {fileID: 735831174}
@@ -3965,7 +3964,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundPosition: {x: 0, y: 0, z: 0}
-  buttonClicked: 0
   ShootingTutorialPanel: {fileID: 1246555088}
   EnemyTutorialPanel: {fileID: 569101375}
   MainMenu: {fileID: 683220201}
@@ -5225,7 +5223,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundPosition: {x: 0, y: 0, z: 0}
-  buttonClicked: 0
   TutorialPanel: {fileID: 460666428}
   next1: {fileID: 453107324}
   clickSound: {fileID: 7845263321880281547, guid: 8e3faac86c07a69409e8ab5e9d9ec063, type: 3}
@@ -5563,7 +5560,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundPosition: {x: 0, y: 0, z: 0}
-  buttonClicked: 0
   LevelPanel: {fileID: 217689575}
   TutorialPanel: {fileID: 460666428}
   AudioPanel: {fileID: 2028643027}
@@ -11973,12 +11969,6 @@ MonoBehaviour:
   clickSfxSlider: {fileID: 482754706}
   shootSfxSlider: {fileID: 289760658}
   deathSfxSlider: {fileID: 1524973818}
-  musicVolume: 0
-  clickVolume: 0
-  shootVolume: 0
-  deathVolume: 0
-  muted: 0
-  saveable: 0
 --- !u!4 &1238279382
 Transform:
   m_ObjectHideFlags: 0
@@ -12110,7 +12100,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundPosition: {x: 0, y: 0, z: 0}
-  buttonClicked: 0
   TutorialPanel: {fileID: 460666428}
   clickSound: {fileID: 7845263321880281547, guid: 8e3faac86c07a69409e8ab5e9d9ec063, type: 3}
   weapon: {fileID: 0}
@@ -14878,10 +14867,6 @@ MonoBehaviour:
   music3: {fileID: 8300000, guid: c1bb757d4715a3143b25a1e3dbbb5822, type: 3}
   music4: {fileID: 8300000, guid: 4e81d8c7f9817ac4896961ab5f24b14f, type: 3}
   music5: {fileID: 8300000, guid: 8b373c59756de2b4b8e9fbe515fc1708, type: 3}
-  SoundOff: {fileID: 2016812039}
-  SoundOn: {fileID: 724599263}
-  nextMusic: 0
-  levelNumber: 0
   mixer: {fileID: 24100000, guid: ee60781596b429347a9a8206a6e8ca79, type: 2}
 --- !u!82 &1593321120
 AudioSource:
@@ -18984,8 +18969,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 8148614102101418301}
   bulletPreFab: {fileID: 1163081359917880039, guid: 2513db88762f0ad43a40a1bc1d3515ae, type: 3}
-  movement: {fileID: 8148614101186489448}
-  bulletForce: 20
 --- !u!114 &8148614101186489444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19002,9 +18985,6 @@ MonoBehaviour:
   bulletPreFab: {fileID: 1163081359917880039, guid: 2513db88762f0ad43a40a1bc1d3515ae, type: 3}
   ammo: []
   movement: {fileID: 8148614101186489448}
-  bulletForce: 20
-  ammoCount: 4
-  index: 0
 --- !u!212 &8148614101186489446
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19092,7 +19072,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 8148614101186489447}
   shooting: {fileID: 8148614101186489444}
-  waited: 0
 --- !u!82 &8148614101186489451
 AudioSource:
   m_ObjectHideFlags: 0

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Enemy3 : Enemy
 {
-    Vector2 movement;
+    private Vector2 movement;
     public void Start(){
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        RB = GetComponent<Rigidbody2D>();
         movement.y = -1.5f;
-        rb.velocity = movement;
+        RB.velocity = movement;
     }
     public override void Die()
     {
