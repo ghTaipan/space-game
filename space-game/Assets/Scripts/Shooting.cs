@@ -12,7 +12,7 @@ public class Shooting : MonoBehaviour
     public GameObject[] ammo;
     public WeaponMovement movement;
     private float bulletForce = 20f;
-    private int ammoCount = 4;
+    private int ammoCount = 0;
     private int index = 0;
     AudioSource shooting_audio;
     private void Start(){

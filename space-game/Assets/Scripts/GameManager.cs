@@ -12,16 +12,20 @@ public class GameManager : MonoBehaviour
     public GameObject[] enemyCount;
     public GameObject player;
     public GameObject weapon;
-    public GameObject ammunition;
     public GameObject enemy1;
     public GameObject enemy2;
     public GameObject enemy3;
     public GameObject enemyWeapon;
     public GameObject LoadScene;
     public GameObject ESCPanel;
+    public GameObject ammo1;
+    public GameObject ammo2;
+    public GameObject ammo3;
+    public GameObject ammo4;
     private bool lose = false;
     private bool gameStarted = false;
     private int mod = 0;
+    private int ammoCount = 0;
     public void Start(){
         mathSystem.SetActive(true);
     }
@@ -29,9 +33,8 @@ public class GameManager : MonoBehaviour
         ESCPanel.SetActive(true);
         player.SetActive(true);
         weapon.SetActive(true);
-        ammunition.SetActive(true);
         gameStarted = true;
-        //prepareLevel();
+        prepareLevel();
         int index = FindObjectOfType<DoNotDestory>().LevelNumber;
         mod = index % 4;
         if(index/4 == 0){
@@ -163,14 +166,19 @@ public class GameManager : MonoBehaviour
         }
     }
     private void prepareLevel(){
-        player.GetComponent<Animator>().SetTrigger("TriEnter");
-        weapon.GetComponent<Animator>().SetTrigger("TriOn");
-        weapon.GetComponent<WeaponMovement>().enabled = true;
-        weapon.GetComponent<WeaponMovement>().Waited = false;
-        weapon.GetComponent<Rigidbody2D>().rotation = 0;
-        weapon.GetComponent<WeaponMovement>().Start();
-        FindObjectOfType<Shooting>().Index = 0;
-        FindObjectOfType<Shooting>().AmmoCount = 4;
+        weapon.GetComponent<Shooting>().AmmoCount = ammoCount;
+        if(ammoCount >= 1){
+            ammo4.SetActive(true);
+        }
+        if(ammoCount >= 2){
+            ammo3.SetActive(true);
+        }
+        if(ammoCount >= 3){
+            ammo2.SetActive(true);
+        }
+        if(ammoCount == 4){
+            ammo1.SetActive(true);
+        }
     }
     private void LevelCompleted(){
         if(player.gameObject != null && !completeLevelUI.GetComponent<LevelComplete>().LCStarted){
@@ -232,13 +240,18 @@ public class GameManager : MonoBehaviour
         }
     }
     public bool Lose
-      {
-          get {return lose; }
-          set { lose = value;}
-      }
+    {
+        get {return lose; }
+        set { lose = value;}
+    }
     public int Mod
-      {
-          get {return mod; }
-          set { mod = value;}
+    {
+        get {return mod; }
+        set { mod = value;}
       }
+    public int AmmoCount
+    {
+        get {return ammoCount; }
+        set { ammoCount = value;}
+    }
 }

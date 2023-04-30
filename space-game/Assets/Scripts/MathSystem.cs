@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class MathSystem : UIParrent
 {   [SerializeField] private Image uiFill;
@@ -32,6 +33,17 @@ public class MathSystem : UIParrent
         Question1();
         Invoke("WaitLoadScreen",1.5f);
         levelNumber = FindObjectOfType<DoNotDestory>().LevelNumber;
+    }
+    public void MainMenu(){
+        buttonClicked = true;
+        MS.SetTrigger("MStoMM");
+        Instantiate(clickSound,soundPosition,Quaternion.identity);
+        Invoke("destroySound",0.3f);
+        Destroy(FindObjectOfType<DoNotDestory>().gameObject);
+        Invoke("waitForMainMenu",1f);
+    }
+    private void waitForMainMenu(){
+        SceneManager.LoadScene(0);
     }
     private void SetTimer(int Second){
         remainingDuration = Second;
@@ -86,6 +98,7 @@ public class MathSystem : UIParrent
         Invoke("WaitForStartAnim",2f);
     }
     private void WaitForStartAnim(){
+        FindObjectOfType<GameManager>().AmmoCount = ammoCount;
         FindObjectOfType<GameManager>().StartGame();
         gameObject.SetActive(false);
     }
@@ -93,30 +106,6 @@ public class MathSystem : UIParrent
         givenInput = inputField.text;
         inputField.text = "";
         answer();
-    }
-    private void Question1(){ //For addition: 2 digit + 1 digit
-        levelNumber = FindObjectOfType<DoNotDestory>().LevelNumber;
-        Debug.Log(levelNumber);
-        if(levelNumber / 4 == 0){
-            a = UnityEngine.Random.Range(10,100);
-            b = UnityEngine.Random.Range(1,10);
-            question.text = "What is the result of " + a.ToString() + " + " + b.ToString() + " = ?";
-        }
-        else if (levelNumber /4 == 1){
-            a = UnityEngine.Random.Range(10,100);
-            b = UnityEngine.Random.Range(1,10);
-            question.text = "What is the result of " + a.ToString() + " - " + b.ToString() + " = ?";
-        }
-        else if (levelNumber /4 == 2){
-            a = UnityEngine.Random.Range(10,100);
-            b = UnityEngine.Random.Range(1,10);
-            question.text = "What is the result of " + a.ToString() + " * " + b.ToString() + " = ?";
-        }
-        else{
-            a = UnityEngine.Random.Range(10,100);
-            b = findRandomDivisor(a);
-            question.text = "What is the result of " + a.ToString() + " / " + b.ToString() + " = ?";
-        }
     }
     private void answer(){
         Instantiate(clickSound,soundPosition,Quaternion.identity);
@@ -126,38 +115,82 @@ public class MathSystem : UIParrent
             pause = true;
             if(levelNumber / 4 == 0){
                 if(a + b == givenAnswer){
-                    MS.SetTrigger("CorAns");
-                    ammoCount++;
+                    if(questionNumber == 4){
+                        MS.SetTrigger("CorFAns");
+                        ammoCount++;
+                    }
+                    else{
+                        MS.SetTrigger("CorAns");
+                        ammoCount++;
+                    }
                 }
                 else{
-                    MS.SetTrigger("WrngAns");
+                    if(questionNumber == 4){
+                         MS.SetTrigger("WrngFAns");
+                    }
+                    else{
+                        MS.SetTrigger("WrngAns");
+                    }
                 }
             }
             else if(levelNumber / 4 == 1){
                 if(a - b == givenAnswer){
-                    MS.SetTrigger("CorAns");
-                    ammoCount++;
+                    if(questionNumber == 4){
+                        MS.SetTrigger("CorFAns");
+                        ammoCount++;
+                    }
+                    else{
+                        MS.SetTrigger("CorAns");
+                        ammoCount++;
+                    }
                 }
                 else{
-                    MS.SetTrigger("WrngAns");
+                    if(questionNumber == 4){
+                         MS.SetTrigger("WrngFAns");
+                    }
+                    else{
+                        MS.SetTrigger("WrngAns");
+                    }
                 }
             }
-            else if(levelNumber / 4 == 3){
+            else if(levelNumber / 4 == 2){
                 if(a * b == givenAnswer){
-                    MS.SetTrigger("CorAns");
-                    ammoCount++;
+                    if(questionNumber == 4){
+                        MS.SetTrigger("CorFAns");
+                        ammoCount++;
+                    }
+                    else{
+                        MS.SetTrigger("CorAns");
+                        ammoCount++;
+                    }
                 }
                 else{
-                    MS.SetTrigger("WrngAns");
+                    if(questionNumber == 4){
+                         MS.SetTrigger("WrngFAns");
+                    }
+                    else{
+                        MS.SetTrigger("WrngAns");
+                    }
                 }
             }
             else{
                 if(a / b == givenAnswer){
-                    MS.SetTrigger("CorAns");
-                    ammoCount++;
+                    if(questionNumber == 4){
+                        MS.SetTrigger("CorFAns");
+                        ammoCount++;
+                    }
+                    else{
+                        MS.SetTrigger("CorAns");
+                        ammoCount++;
+                    }
                 }
                 else{
-                    MS.SetTrigger("WrngAns");
+                    if(questionNumber == 4){
+                         MS.SetTrigger("WrngFAns");
+                    }
+                    else{
+                        MS.SetTrigger("WrngAns");
+                    }
                 }
             }
             if(questionNumber == 1){
@@ -170,12 +203,35 @@ public class MathSystem : UIParrent
                 Invoke("Question4",3.5f);
             }
             else{
-                Invoke("StartGame",5f);
+                Invoke("WaitForStartAnim",4.5f);
             }
             questionNumber++;
         }
         else{
             MS.SetTrigger("Warning");
+        }
+    }
+    private void Question1(){ //For addition: 2 digit + 1 digit
+        levelNumber = FindObjectOfType<DoNotDestory>().LevelNumber;
+        if(levelNumber / 4 == 0){
+            a = UnityEngine.Random.Range(10,100);
+            b = UnityEngine.Random.Range(1,10);
+            question.text = "What is the result of " + a.ToString() + " + " + b.ToString() + " = ?";
+        }
+        else if (levelNumber / 4 == 1){
+            a = UnityEngine.Random.Range(10,100);
+            b = UnityEngine.Random.Range(1,10);
+            question.text = "What is the result of " + a.ToString() + " - " + b.ToString() + " = ?";
+        }
+        else if (levelNumber / 4 == 2){
+            a = UnityEngine.Random.Range(10,100);
+            b = UnityEngine.Random.Range(1,10);
+            question.text = "What is the result of " + a.ToString() + " * " + b.ToString() + " = ?";
+        }
+        else{
+            a = generateNPN(10,100);
+            b = findRandomDivisor(a);
+            question.text = "What is the result of " + a.ToString() + " / " + b.ToString() + " = ?";
         }
     }
     private void Question2(){ //For addition: 2 digit + 2 digit
@@ -196,10 +252,11 @@ public class MathSystem : UIParrent
         else if (levelNumber /4 == 2){
             a = UnityEngine.Random.Range(10,100);
             b = UnityEngine.Random.Range(10,100);
-            question.text = "What is the result of " + a.ToString() + " *" + b.ToString() + " = ?";
+            question.text = "What is the result of " + a.ToString() + " * " + b.ToString() + " = ?";
         }
         else{
-            a = UnityEngine.Random.Range(10,100);
+            a = generateNPN(10,100);;
+            divisors.Clear();
             b = findRandomDivisor(a);
             question.text = "What is the result of " + a.ToString() + " / " + b.ToString() + " = ?";
         }
@@ -222,10 +279,11 @@ public class MathSystem : UIParrent
         else if (levelNumber /4 == 2){
             a = UnityEngine.Random.Range(100,1000);
             b = UnityEngine.Random.Range(1,10);
-            question.text = "What is the result of " + a.ToString() + " *" + b.ToString() + " = ?";
+            question.text = "What is the result of " + a.ToString() + " * " + b.ToString() + " = ?";
         }
         else{
-            a = UnityEngine.Random.Range(100,1000);
+            a = generateNPN(100,1000);;
+            divisors.Clear();
             b = findRandomDivisor(a);
             question.text = "What is the result of " + a.ToString() + " / " + b.ToString() + " = ?";
         }
@@ -248,19 +306,20 @@ public class MathSystem : UIParrent
         else if (levelNumber /4 == 2){
             a = UnityEngine.Random.Range(100,1000);
             b = UnityEngine.Random.Range(10,100);
-            question.text = "What is the result of " + a.ToString() + " *" + b.ToString() + " = ?";
+            question.text = "What is the result of " + a.ToString() + " * " + b.ToString() + " = ?";
         }
         else{
-            a = UnityEngine.Random.Range(100,1000);
+            a = generateNPN(100,1000);
+            divisors.Clear();
             b = findRandomDivisor(a);
             question.text = "What is the result of " + a.ToString() + " / " + b.ToString() + " = ?";
         }
     }
     private bool IsPrime(int num){
     if (num < 2) return false;
-    for (int i = 2; i <= Mathf.Sqrt(num); i++)
+    for (int i = 2; i < num; i++)
     {
-        if (num % i == 0) return false;
+        if (num % i == 0)return false;
     }
     return true;
     }
@@ -277,6 +336,6 @@ public class MathSystem : UIParrent
                 divisors.Add(i);
             }
         }
-        return divisors[Random.Range(1,divisors.Count)];
+        return divisors[Random.Range(0,divisors.Count-1)];
     }
 }
