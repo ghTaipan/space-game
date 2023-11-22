@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 17985519}
   - component: {fileID: 17985518}
   m_Layer: 5
-  m_Name: AudioButton
+  m_Name: SettingsButton
   m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -358,7 +358,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Audio
+  m_text: Settings
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c8fc66d4b26ce849b696b4e6cf66521, type: 2}
   m_sharedMaterial: {fileID: -3904268500477948361, guid: 7c8fc66d4b26ce849b696b4e6cf66521, type: 2}
@@ -367,7 +367,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 16777215
   m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -714,7 +714,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d627553950fdd5347863e80d13d8cf75, type: 3}
-  m_Color: {r: 1, g: 0.25882354, b: 0.29803923, a: 1}
+  m_Color: {r: 1, g: 0.25882354, b: 0.29803923, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1183,7 +1183,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d627553950fdd5347863e80d13d8cf75, type: 3}
-  m_Color: {r: 1, g: 0.25882354, b: 0.29803923, a: 1}
+  m_Color: {r: 1, g: 0.25882354, b: 0.29803923, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1942,7 +1942,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -2141,7 +2141,6 @@ GameObject:
   m_Component:
   - component: {fileID: 376528557}
   - component: {fileID: 376528560}
-  - component: {fileID: 376528559}
   - component: {fileID: 376528558}
   m_Layer: 0
   m_Name: Laser2
@@ -2191,26 +2190,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 12.92, y: 2.3898911}
   m_EdgeRadius: 0
---- !u!95 &376528559
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 376528556}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 42c120ec60e6e94409f8927607aa6c57, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!212 &376528560
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2253,7 +2232,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e0b05a9cf6a8f8f4ba2e4fb6bd8d588b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.15686275, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.15686275, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3657,7 +3636,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -3879,7 +3858,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -4148,7 +4127,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -4686,7 +4665,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d627553950fdd5347863e80d13d8cf75, type: 3}
-  m_Color: {r: 1, g: 0.25882354, b: 0.29803923, a: 1}
+  m_Color: {r: 1, g: 0.25882354, b: 0.29803923, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5170,7 +5149,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &986659302
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5345,7 +5324,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -6279,7 +6258,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 16777215
   m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -6767,7 +6746,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1480477221}
   - component: {fileID: 1480477224}
-  - component: {fileID: 1480477223}
   - component: {fileID: 1480477222}
   m_Layer: 0
   m_Name: Laser4
@@ -6817,26 +6795,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 12.92, y: 2.768758}
   m_EdgeRadius: 0
---- !u!95 &1480477223
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1480477220}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a707f40c1a87f3c48a6a75b157d9659f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!212 &1480477224
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6879,7 +6837,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4e2c84457652206488f2ad3c2488af91, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.15686275, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.15686275, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -7359,7 +7317,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 3289650
+    rgba: 2150773298
   m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 0.5}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -8147,7 +8105,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d627553950fdd5347863e80d13d8cf75, type: 3}
-  m_Color: {r: 1, g: 0.25882354, b: 0.29803923, a: 1}
+  m_Color: {r: 1, g: 0.25882354, b: 0.29803923, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -8505,7 +8463,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 16777215
   m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -8910,7 +8868,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1900821238}
   - component: {fileID: 1900821241}
-  - component: {fileID: 1900821240}
   - component: {fileID: 1900821239}
   m_Layer: 0
   m_Name: Laser
@@ -8960,26 +8917,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 12.92, y: 2.5893629}
   m_EdgeRadius: 0
---- !u!95 &1900821240
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1900821237}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8e75d58d65ce0994c88ee4dd7d8d4de8, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!212 &1900821241
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9022,7 +8959,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 90ce7ed630341c940aac05d40509c173, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.15686275, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.15686275, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -9177,7 +9114,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1929732702}
   - component: {fileID: 1929732705}
-  - component: {fileID: 1929732704}
   - component: {fileID: 1929732703}
   m_Layer: 0
   m_Name: Laser3
@@ -9227,26 +9163,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 12.92, y: 2.4494379}
   m_EdgeRadius: 0
---- !u!95 &1929732704
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1929732701}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 20a5ff22baa40d14e8aaec9727be3883, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!212 &1929732705
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9289,7 +9205,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e1b2808ca94efa442bc979acd81d6ce5, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.15686275, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.15686275, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -9755,6 +9671,7 @@ MonoBehaviour:
   question: {fileID: 709219261}
   loadScene: {fileID: 1815496100}
   clickSound: {fileID: 7845263321880281547, guid: 8e3faac86c07a69409e8ab5e9d9ec063, type: 3}
+  MusicButtons: {fileID: 1774067268}
   inputField: {fileID: 402582321}
 --- !u!95 &1965293203
 Animator:
@@ -10716,6 +10633,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3747419494560336916, guid: 021e4bb282dbe5e4d8732089e460863f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747419494560336917, guid: 021e4bb282dbe5e4d8732089e460863f, type: 3}
+      propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

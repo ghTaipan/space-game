@@ -17,6 +17,7 @@ public class MathSystem : UIParrent
     public TextMeshProUGUI question;
     public GameObject loadScene;
     public GameObject clickSound;
+    public GameObject MusicButtons;
     public TMP_InputField inputField;
     private string givenInput;
     private int givenAnswer;
@@ -37,6 +38,7 @@ public class MathSystem : UIParrent
     public void MainMenu(){
         buttonClicked = true;
         MS.SetTrigger("MStoMM");
+        MusicButtons.SetActive(false);
         Instantiate(clickSound,soundPosition,Quaternion.identity);
         Invoke("destroySound",0.3f);
         Destroy(FindObjectOfType<DoNotDestory>().gameObject);

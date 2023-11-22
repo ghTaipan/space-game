@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 17985519}
   - component: {fileID: 17985518}
   m_Layer: 5
-  m_Name: AudioButton
+  m_Name: SettingsButton
   m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -442,7 +442,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Audio
+  m_text: Settings
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c8fc66d4b26ce849b696b4e6cf66521, type: 2}
   m_sharedMaterial: {fileID: -3904268500477948361, guid: 7c8fc66d4b26ce849b696b4e6cf66521, type: 2}
@@ -927,7 +927,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d627553950fdd5347863e80d13d8cf75, type: 3}
-  m_Color: {r: 1, g: 0.25882354, b: 0.29803923, a: 1}
+  m_Color: {r: 1, g: 0.25882354, b: 0.29803923, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1403,7 +1403,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d627553950fdd5347863e80d13d8cf75, type: 3}
-  m_Color: {r: 0, g: 0.43529412, b: 0.7254902, a: 1}
+  m_Color: {r: 0, g: 0.43529412, b: 0.7254902, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1942,7 +1942,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 1254612
+    rgba: 4279444692
   m_fontColor: {r: 0.83137256, g: 0.14117648, b: 0.07450981, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -2169,7 +2169,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e0b05a9cf6a8f8f4ba2e4fb6bd8d588b, type: 3}
-  m_Color: {r: 0.9647059, g: 0, b: 1, a: 1}
+  m_Color: {r: 0.9647059, g: 0, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4240,7 +4240,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d627553950fdd5347863e80d13d8cf75, type: 3}
-  m_Color: {r: 0.9607843, g: 0.21176471, b: 0.72156864, a: 1}
+  m_Color: {r: 0.9607843, g: 0.21176471, b: 0.72156864, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4600,6 +4600,7 @@ MonoBehaviour:
   question: {fileID: 2112888676}
   loadScene: {fileID: 1815496100}
   clickSound: {fileID: 7845263321880281547, guid: 8e3faac86c07a69409e8ab5e9d9ec063, type: 3}
+  MusicButtons: {fileID: 1774067268}
   inputField: {fileID: 1982046944}
 --- !u!95 &874411985
 Animator:
@@ -4989,7 +4990,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &986659302
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5612,7 +5613,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 1254612
+    rgba: 4279444692
   m_fontColor: {r: 0.83137256, g: 0.14117648, b: 0.07450981, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -6480,7 +6481,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 1254612
+    rgba: 4279444692
   m_fontColor: {r: 0.83137256, g: 0.14117648, b: 0.07450981, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -6783,7 +6784,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4e2c84457652206488f2ad3c2488af91, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.15686275, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.15686275, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -8325,7 +8326,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d627553950fdd5347863e80d13d8cf75, type: 3}
-  m_Color: {r: 1, g: 0.43137255, b: 0.21960784, a: 1}
+  m_Color: {r: 1, g: 0.43137255, b: 0.21960784, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -9203,7 +9204,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 90ce7ed630341c940aac05d40509c173, type: 3}
-  m_Color: {r: 1, g: 0.25882354, b: 0.29803923, a: 1}
+  m_Color: {r: 1, g: 0.25882354, b: 0.29803923, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -9470,7 +9471,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e1b2808ca94efa442bc979acd81d6ce5, type: 3}
-  m_Color: {r: 0.18431373, g: 0.3254902, b: 0.8666667, a: 1}
+  m_Color: {r: 0.18431373, g: 0.3254902, b: 0.8666667, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -10454,7 +10455,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 1254612
+    rgba: 4279444692
   m_fontColor: {r: 0.83137256, g: 0.14117648, b: 0.07450981, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -10716,6 +10717,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3747419494560336916, guid: 021e4bb282dbe5e4d8732089e460863f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747419494560336917, guid: 021e4bb282dbe5e4d8732089e460863f, type: 3}
+      propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

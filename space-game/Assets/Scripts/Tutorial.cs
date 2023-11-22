@@ -6,6 +6,7 @@ public class Tutorial : UIParrent
 {
     public GameObject ShootingTutorialPanel;
     public GameObject EnemyTutorialPanel;
+    public GameObject MathTutorialPanel;
     public GameObject MainMenu;
     public GameObject clickSound;
     private Animator TutAnim;  
@@ -14,6 +15,7 @@ public class Tutorial : UIParrent
         MainMenu.SetActive(false);
         ShootingTutorialPanel.SetActive(false);
         EnemyTutorialPanel.SetActive(false);
+        MathTutorialPanel.SetActive(false);
         TutAnim = GetComponent<Animator>();
         soundPosition.x = 0;
         soundPosition.y = 0;
@@ -48,6 +50,18 @@ public class Tutorial : UIParrent
         EnemyTutorialPanel.GetComponent<EnemyTutorial>().Start();
         EnemyTutorialPanel.GetComponent<EnemyTutorial>().instEnemy();
         EnemyTutorialPanel.GetComponent<Animator>().SetTrigger("ETIntro");
+    }
+    public void MathTutorial(){
+        buttonClicked = true;
+        TutAnim.SetTrigger("Button");
+        Invoke("waitForMT",1.7f);
+        Instantiate(clickSound,soundPosition,Quaternion.identity);
+        Invoke("destroySound",0.3f);
+    }
+    private void waitForMT(){
+        MathTutorialPanel.SetActive(true);
+        MathTutorialPanel.GetComponent<MathSystemTutorial>().Start();
+        MathTutorialPanel.GetComponent<Animator>().SetTrigger("MTIntro");
     }
     public void BackToMainMenu(){
         buttonClicked = true;

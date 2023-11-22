@@ -43,6 +43,9 @@ public class LevelComplete : MonoBehaviour
       FindObjectOfType<DoNotDestory>().NextMusic = false;
       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+    else if (sceeneIndex == 16){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
     else{
       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
       /*
